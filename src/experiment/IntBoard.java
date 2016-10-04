@@ -71,10 +71,6 @@ public class IntBoard {
 	}
 
 	public Set<BoardCell> getTargets() {
-		for (BoardCell c: targets) {
-			System.out.println(c.getRow()+ "," + c.getColumn());
-		}
-		System.out.println("");
 		return targets;
 	}
 	
