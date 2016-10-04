@@ -43,4 +43,26 @@ public class Board {
 	public void calcTargets(BoardCell cell, int pathLength) {
 		
 	}
+	
+	public void setConfigFiles(String boardCSV, String legend) {
+		
+	}
+	
+	public BoardCell getCellAt(int row, int col) {
+		return null;
+	}
+	
+	public Map<Character,String> getLegend() {
+		return null;
+	}
+	
+	public int getNumRows() {
+		return numRows;
+	}
+	
+	public int getNumColumns() {
+		return numCols;
+	}
+	
+	
 }
