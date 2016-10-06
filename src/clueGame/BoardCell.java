@@ -35,7 +35,7 @@ public class BoardCell {
 		return initial;
 	}		
 
-	public void setDoorDir(char theDoorway) {
+	public void setDoorDir(char theDoorway) { 
 		switch(theDoorway) {
 		case 'D': 
 			doorDir = DoorDirection.DOWN;
