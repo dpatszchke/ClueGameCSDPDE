@@ -8,4 +8,4 @@ Y, Gallery, Card
 L, Library, Card
 B, Laboratory, Card
 C, Catacombs, Other
-W, Walkway, Other
+w, Walkway, Other

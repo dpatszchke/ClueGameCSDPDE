@@ -1,8 +1,14 @@
 package clueGame;
 
 public class BadConfigFormatException extends Exception {
+	private static String message;
+	
 	public BadConfigFormatException() {
-		super();
+		super("Config file not properly formatted.");
+	}
+	
+	public BadConfigFormatException(String error) {
+		super(error);
 	}
 
 }

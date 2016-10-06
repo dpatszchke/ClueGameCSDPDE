@@ -104,7 +104,7 @@ public class TCJP_FileInitTests {
 			assertEquals('R', board.getCellAt(0, 5).getInitial());
 			assertEquals('Y', board.getCellAt(0, 12).getInitial());
 			// Test last cell in room
-			assertEquals('K', board.getCellAt(4, 17).getInitial());
+			assertEquals('K', board.getCellAt(17, 4).getInitial());
 			assertEquals('S', board.getCellAt(20, 4).getInitial());
 			// Test cells not against walls
 			assertEquals('L', board.getCellAt(4, 22).getInitial());
