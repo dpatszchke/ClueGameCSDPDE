@@ -55,9 +55,7 @@ public class Board {
 		while (fin.hasNextLine()) {
 			String roomData = fin.nextLine();
 			String[] roomComps = roomData.split(",");
-			System.out.println(roomComps[0] + roomComps[1] + roomComps[2]);
-			
-			if ((roomComps[2] == card) && (roomComps[2] == other)) {	
+			if (!(roomComps[2].equals(card)) && !(roomComps[2].equals(other))) {
 				
 				throw new BadConfigFormatException("Bad room classification");
 			}
@@ -65,7 +63,6 @@ public class Board {
 				rooms.put(roomComps[0].charAt(0), roomComps[1].substring(1));
 			}
 		}
-		System.out.println(rooms);
 		fin.close();
 	}
 	
