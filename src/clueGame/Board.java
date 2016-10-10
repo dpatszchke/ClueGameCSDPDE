@@ -45,6 +45,7 @@ public class Board {
 			System.out.println(e);
 		}
 		
+		calcAdjacencies();
 	}
 	
 	public void loadRoomConfig() throws BadConfigFormatException, FileNotFoundException {
@@ -118,28 +119,67 @@ public class Board {
 		fin.close();
 	}
 	
-	public void calcAdjacencies() {
-		Map<BoardCell, HashSet<BoardCell>> adjMap = new HashMap<BoardCell, HashSet<BoardCell>>();
+	public void calcAdjacencies() {	
+		adjMatrix = new HashMap<BoardCell, Set<BoardCell>>();
 
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numCols; j++) {
+				//Make a new set to store the adjacent cells
 				HashSet<BoardCell> adjCells = new HashSet<BoardCell>();
+				
+				//If we're in a room, then there aren't any adjacent cells (not now at least)
+				if (!getCellAt(i,j).isDoorway() && !getCellAt(i,j).isWalkway()) {
+					adjMatrix.put(getCellAt(i,j), adjCells);
+					continue;
+				}
+				
+				//If we're in a door, there's only one way out
+				if (getCellAt(i,j).isDoorway()) {
+					switch(getCellAt(i,j).getDoorDirection()) {
+					case DOWN:
+						adjCells.add(getCellAt(i+1,j));
+						break;
+					case UP:
+						adjCells.add(getCellAt(i-1,j));
+						break;
+					case LEFT:
+						adjCells.add(getCellAt(i,j-1));
+						break;
+					case RIGHT:
+						adjCells.add(getCellAt(i,j+1));
+						break;
+					default:
+					}
+					adjMatrix.put(getCellAt(i,j), adjCells);
+					continue;					
+				}
+				
+				
+				//Otherwise, we're on a walkway. Get adjacencies for other walkways
+				if ((i != 0) && getCellAt(i-1,j).isWalkway()) adjCells.add(getCellAt(i-1,j));
+				if ((i != (numRows-1)) && getCellAt(i+1,j).isWalkway()) adjCells.add(getCellAt(i+1,j));
+				if ((j != 0) && getCellAt(i,j-1).isWalkway()) adjCells.add(getCellAt(i,j-1));
+				if ((j != (numCols-1)) && getCellAt(i,j+1).isWalkway()) adjCells.add(getCellAt(i,j+1));
+				
+				//And adjacencies for the doors
+				if (i != 0 && getCellAt(i-1,j).isDoorway()) 
+					if (getCellAt(i-1,j).getDoorDirection().equals(DoorDirection.DOWN)) adjCells.add(getCellAt(i-1,j));
+				if (i != (numRows-1) && getCellAt(i+1,j).isDoorway()) 
+					if (getCellAt(i+1,j).getDoorDirection().equals(DoorDirection.UP)) adjCells.add(getCellAt(i+1,j));
+				if (j != 0 && getCellAt(i,j-1).isDoorway()) 
+					if (getCellAt(i,j-1).getDoorDirection().equals(DoorDirection.RIGHT)) adjCells.add(getCellAt(i,j-1));
+				if (j != (numCols-1) && getCellAt(i,j+1).isDoorway()) 
+					if (getCellAt(i,j+1).getDoorDirection().equals(DoorDirection.LEFT)) adjCells.add(getCellAt(i,j+1));
 
-				if (i != 0) adjCells.add(getCellAt(i-1,j));
-				if (i != (numRows-1)) adjCells.add(getCellAt(i+1,j));
-				if (j != 0) adjCells.add(getCellAt(i,j-1));
-				if (j != (numCols-1)) adjCells.add(getCellAt(i,j+1));
-
-				adjMap.put(getCellAt(i,j), adjCells);			
+				adjMatrix.put(getCellAt(i,j), adjCells);			
 
 			}
 		}
-
-
+		System.out.println(adjMatrix);
 	}
 	
 	public void calcTargets(int i, int j, int pathLength) {
-
+		targets = new HashSet<BoardCell>();
 		Set<BoardCell> visited = new HashSet<BoardCell>();
 		visited.add(getCellAt(i,j));
 		Set<BoardCell> adjCell = new HashSet<BoardCell>();
@@ -153,7 +193,20 @@ public class Board {
 		return adjMatrix.get(getCellAt(i,j));
 	}
 	
-	private void findAllTargets(BoardCell cellAt, int pathLength, Set<BoardCell> visited, Set<BoardCell> adjCell) {
+	public void findAllTargets(BoardCell cellAt, int pathLength, Set<BoardCell> visited, Set<BoardCell> adjCell) {
+		for (BoardCell c: adjCell) {
+			if (visited.contains(c)) continue;
+			
+			visited.add(c);
+			if (pathLength == 1 || c.isDoorway()) targets.add(c);
+			else {
+				Set<BoardCell> newAdjCell = new HashSet<BoardCell>();
+				newAdjCell = getAdjList(c.getRow(), c.getColumn());
+				findAllTargets(c, pathLength-1, visited, newAdjCell);
+			}
+			
+			visited.remove(c);
+		}
 		
 	}
 	public void setConfigFiles(String boardCSV, String legend) {

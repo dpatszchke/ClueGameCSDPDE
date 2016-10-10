@@ -16,11 +16,11 @@ public class BoardCell {
 	}
 	
 	public boolean isWalkway() {
-		return (initial == 'w');
+		return (Character.toLowerCase(initial) == 'w'); //Some people used W for walkways, we used w. This is the workaround
 	}
 	
 	public boolean isRoom() {
-		return (initial != 'w' && initial != 'C');
+		return (Character.toLowerCase(initial) != 'w' && initial != 'C');
 	}
 	
 	public boolean isDoorway() {
@@ -52,5 +52,13 @@ public class BoardCell {
 		default:
 		}
 		
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public int getColumn() {
+		return column;
 	}
 }
