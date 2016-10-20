@@ -20,8 +20,11 @@ public class Board {
 	private Map<Character, String> rooms;
 	private Map<BoardCell, Set<BoardCell>> adjMatrix;
 	private Set<BoardCell> targets;
+	private Set<Card> deckOfCards;
 	private String boardConfigFile;
 	private String roomConfigFile;
+	private String cardsConfigFile;
+	private String playerConfigFile;
 	
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
@@ -37,6 +40,8 @@ public class Board {
 			
 			loadRoomConfig();
 			loadBoardConfig();
+			loadCardConfig();
+			loadPlayerConfig();
 			
 		} catch (BadConfigFormatException e) {
 			System.out.println(e);
@@ -46,6 +51,36 @@ public class Board {
 		}
 		
 		calcAdjacencies();
+	}
+	
+	public void loadPlayerConfig(){
+		
+	}
+	
+	public void loadCardConfig() throws BadConfigFormatException, FileNotFoundException{
+		deckOfCards = new HashSet<Card>();
+		FileReader cardsFile = new FileReader(cardsConfigFile);
+		Scanner in = new Scanner(cardsFile); 
+		
+		while (in.hasNextLine()) {
+			String Line = in.nextLine();
+			String[] cardInfo = Line.split(", ");
+			switch (cardInfo[1]){
+				case "Room":
+					Card currentCard = new Card(cardInfo[0], CardType.ROOM);
+					deckOfCards.add(currentCard);
+					break;
+				case "Weapon":
+					Card currentCard2 = new Card(cardInfo[0], CardType.WEAPON);
+					deckOfCards.add(currentCard2);
+					break;
+				case "Person":
+					Card currentCard3 = new Card(cardInfo[0], CardType.PERSON);
+					deckOfCards.add(currentCard3);
+					break;
+			}
+		}
+		
 	}
 	
 	public void loadRoomConfig() throws BadConfigFormatException, FileNotFoundException {
@@ -209,9 +244,11 @@ public class Board {
 		}
 		
 	}
-	public void setConfigFiles(String boardCSV, String legend) {
+	public void setConfigFiles(String boardCSV, String legend, String cards) {
 		boardConfigFile = boardCSV;
 		roomConfigFile = legend;
+		cardsConfigFile = cards;
+		playerConfigFile = players;
 	}
 	
 	public BoardCell getCellAt(int row, int col) {
