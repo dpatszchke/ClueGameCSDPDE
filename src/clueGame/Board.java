@@ -244,7 +244,7 @@ public class Board {
 		}
 		
 	}
-	public void setConfigFiles(String boardCSV, String legend, String cards) {
+	public void setConfigFiles(String boardCSV, String legend, String cards, String players) {
 		boardConfigFile = boardCSV;
 		roomConfigFile = legend;
 		cardsConfigFile = cards;

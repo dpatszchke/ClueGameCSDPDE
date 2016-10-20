@@ -7,6 +7,26 @@ public class Player {
 	private int row;
 	private int column;
 	private ArrayList<Card> playerCards;
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public int getColumn() {
+		return column;
+	}
+
+	public ArrayList<Card> getPlayerCards() {
+		return playerCards;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
 	private Color color;
 	
 	public Player() {
