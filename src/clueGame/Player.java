@@ -1,5 +1,6 @@
 package clueGame;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public class Player {
@@ -7,6 +8,17 @@ public class Player {
 	private int row;
 	private int column;
 	private ArrayList<Card> playerCards;
+	private Color color;
+	
+	
+	
+	public Player(String playerName, Color color, int row, int column) {
+		this.playerName = playerName;
+		this.row = row;
+		this.column = column;
+		this.color = color;
+	}
+
 	public String getPlayerName() {
 		return playerName;
 	}
@@ -26,15 +38,9 @@ public class Player {
 	public Color getColor() {
 		return color;
 	}
-
-	private Color color;
-	
-	public Player() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	public Card dissproveSuggestion(Solution suggestion){
-		
+		return null;
 	}
 
 }

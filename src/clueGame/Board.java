@@ -1,8 +1,11 @@
 package clueGame;
 
+import java.awt.Color;
+import java.lang.reflect.Field;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -25,6 +28,9 @@ public class Board {
 	private String roomConfigFile;
 	private String cardsConfigFile;
 	private String playerConfigFile;
+	private HumanPlayer human;
+	//private ComputerPlayer[] computerPlayers;
+	private ArrayList<ComputerPlayer> computerPlayers;
 	
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
@@ -53,8 +59,21 @@ public class Board {
 		calcAdjacencies();
 	}
 	
-	public void loadPlayerConfig(){
-		
+	public void loadPlayerConfig() throws BadConfigFormatException, FileNotFoundException{
+		FileReader playerFile = new FileReader(playerConfigFile);
+		Scanner in = new Scanner(playerFile); 
+		int c = 0;
+		while (in.hasNextLine()) {
+			String Line = in.nextLine();
+			String[] playerInfo = Line.split(", ");
+			if (c == 0) {
+				human = new HumanPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]));
+			} else {
+				new ComputerPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]));
+			}
+			
+			
+		}
 	}
 	
 	public void loadCardConfig() throws BadConfigFormatException, FileNotFoundException{
@@ -244,6 +263,20 @@ public class Board {
 		}
 		
 	}
+	
+	public Color convertColor(String strColor) {
+	    Color color; 
+	    try {     
+	        // We can use reflection to convert the string to a color
+	        Field field = Class.forName("java.awt.Color").getField(strColor.trim());     
+	        color = (Color)field.get(null); 
+	    } catch (Exception e) {  
+	        color = null; // Not defined  
+	    }
+	    return color;
+	}
+
+	
 	public void setConfigFiles(String boardCSV, String legend, String cards, String players) {
 		boardConfigFile = boardCSV;
 		roomConfigFile = legend;
