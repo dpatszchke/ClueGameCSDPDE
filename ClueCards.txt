@@ -15,7 +15,7 @@ James Fawn, Person
 Janet Fawn, Person
 Filet Knife, Weapon
 Rifle, Weapon
-Cross Bow,  Weapon
-Skinning Knife,  Weapon
+Cross Bow, Weapon
+Skinning Knife, Weapon
 Black Powder Rifle, Weapon
 Shot Gun, Weapon

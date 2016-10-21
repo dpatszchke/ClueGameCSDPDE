@@ -6,6 +6,18 @@ public class Card {
 	
 	
 
+	public String getCardName() {
+		return cardName;
+	}
+
+
+
+	public CardType getCardType() {
+		return cardType;
+	}
+
+
+
 	public Card(String cardName, CardType cardType) {
 		super();
 		this.cardName = cardName;
@@ -17,4 +29,12 @@ public class Card {
 	public boolean equals(){
 		return true;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Card [cardName=" + cardName + ", cardType=" + cardType + "]";
+	}
+	
 }

@@ -66,12 +66,9 @@ public class Board {
 		int c = 0;
 		while (in.hasNextLine()) {
 			String Line = in.nextLine();
-			System.out.println(Line);
 			String[] playerInfo = Line.split(",");
-			System.out.println(playerInfo.length);
 			if (c == 0) {
 				humanPlayer = new HumanPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]));
-				System.out.println(Line + "Human");
 			} else {
 				computerPlayers[c - 1] = new ComputerPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]));
 			}
@@ -323,5 +320,39 @@ public class Board {
 	
 	public HumanPlayer gethumanPlayer() {
 		return humanPlayer;
+	}
+	public Set<Card> getDeckOfCards() {
+		
+		return deckOfCards;
+	}
+	public Object getNumberOfRoomCards() {
+		int counter = 0;
+		for(Card currentCard: deckOfCards){
+			if(currentCard.getCardType() == CardType.ROOM){
+				counter = counter + 1;
+			}
+		}
+			
+		return counter;
+	}
+	public Object getNumberOfWeaponCards() {
+		int counter = 0;
+		for(Card currentCard: deckOfCards){
+			if(currentCard.getCardType() == CardType.WEAPON){
+				counter = counter + 1;
+			}
+		}
+			
+		return counter;
+	}
+	public Object getNumberOfPersonCards() {
+		int counter = 0;
+		for(Card currentCard: deckOfCards){
+			if(currentCard.getCardType() == CardType.PERSON){
+				counter = counter + 1;
+			}
+		}
+			
+		return counter;
 	}
 }

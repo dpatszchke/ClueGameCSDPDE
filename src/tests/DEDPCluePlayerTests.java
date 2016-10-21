@@ -3,11 +3,14 @@ package tests;
 import static org.junit.Assert.*;
 
 import java.awt.Color;
+import java.util.Set;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import clueGame.Board;
+import clueGame.Card;
+import clueGame.CardType;
 import clueGame.ComputerPlayer;
 import clueGame.HumanPlayer;
 
@@ -38,6 +41,25 @@ public class DEDPCluePlayerTests {
 		assertEquals(0, testHumanPlayer.getColumn());
 		assertEquals(10, testComputerArray[0].getColumn());
 		assertEquals(3, testComputerArray[4].getColumn());
+	}
+	
+	@Test
+	public void loadingTheDeckOfCards(){
+		Set<Card> deckOfCards = board.getDeckOfCards();
+		for(Card currentCard: deckOfCards){
+			System.out.println(currentCard);
+		}
+		assertEquals(21, deckOfCards.size());
+		assertEquals(9, board.getNumberOfRoomCards());
+		assertEquals(6, board.getNumberOfWeaponCards());
+		assertEquals(6, board.getNumberOfPersonCards());
+		Card tempCard1 = new Card("John Doe", CardType.PERSON);
+		assert(deckOfCards.contains(tempCard1));
+		Card tempCard2 = new Card("Cross Bow", CardType.WEAPON);
+		assert(deckOfCards.contains(tempCard2));
+		Card tempCard3 = new Card("Gallery", CardType.ROOM);
+		assert(deckOfCards.contains(tempCard3));
+		
 	}
 	
 	
