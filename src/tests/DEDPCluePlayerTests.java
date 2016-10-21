@@ -8,6 +8,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import clueGame.Board;
+import clueGame.ComputerPlayer;
+import clueGame.HumanPlayer;
 
 public class DEDPCluePlayerTests {
 	private static Board board;
@@ -21,18 +23,21 @@ public class DEDPCluePlayerTests {
 	
 	@Test
 	public void loadingThePeople() {
-		assert("John Doe", human.getPlayerName());
-		assert("Jane Doe", computer1.getPlayerName());
-		assert("Janet Fawn", computer5.getPlayername());
-		assert(Color.orange, human.getColor());
-		assert(Color.magenta, computer1.getColor());
-		assert(Color.yellow, computer5.getColor());
-		assert(18, human.getRow());
-		assert(24, computer1.getRow());
-		assert(0, computer5.getRow());
-		assert(0, human.getColumn());
-		assert(10, computer1.getColumn());
-		assert(3, computer5.getColumn());
+		HumanPlayer testHumanPlayer = board.gethumanPlayer();
+		ComputerPlayer[] testComputerArray = board.getComputerPlayers();
+		
+		assertEquals("John Doe", testHumanPlayer.getPlayerName());
+		assertEquals("Jane Doe", testComputerArray[0].getPlayerName());
+		assertEquals("Janet Fawn", testComputerArray[4].getPlayerName());
+		assertEquals(Color.orange, testHumanPlayer.getColor());
+		assertEquals(Color.magenta, testComputerArray[0].getColor());
+		assertEquals(Color.yellow, testComputerArray[4].getColor());
+		assertEquals(18, testHumanPlayer.getRow());
+		assertEquals(24, testComputerArray[0].getRow());
+		assertEquals(0, testComputerArray[4].getRow());
+		assertEquals(0, testHumanPlayer.getColumn());
+		assertEquals(10, testComputerArray[0].getColumn());
+		assertEquals(3, testComputerArray[4].getColumn());
 	}
 	
 	

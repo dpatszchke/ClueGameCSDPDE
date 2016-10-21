@@ -28,9 +28,9 @@ public class Board {
 	private String roomConfigFile;
 	private String cardsConfigFile;
 	private String playerConfigFile;
-	private HumanPlayer human;
+	private HumanPlayer humanPlayer;
 	//private ComputerPlayer[] computerPlayers;
-	private ArrayList<ComputerPlayer> computerPlayers;
+	private ComputerPlayer[] computerPlayers;
 	
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
@@ -60,20 +60,25 @@ public class Board {
 	}
 	
 	public void loadPlayerConfig() throws BadConfigFormatException, FileNotFoundException{
+		computerPlayers = new ComputerPlayer[5];
 		FileReader playerFile = new FileReader(playerConfigFile);
 		Scanner in = new Scanner(playerFile); 
 		int c = 0;
 		while (in.hasNextLine()) {
 			String Line = in.nextLine();
-			String[] playerInfo = Line.split(", ");
+			System.out.println(Line);
+			String[] playerInfo = Line.split(",");
+			System.out.println(playerInfo.length);
 			if (c == 0) {
-				human = new HumanPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]));
+				humanPlayer = new HumanPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]));
+				System.out.println(Line + "Human");
 			} else {
-				new ComputerPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]));
+				computerPlayers[c - 1] = new ComputerPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]));
 			}
-			
+			c = c + 1;
 			
 		}
+		in.close();
 	}
 	
 	public void loadCardConfig() throws BadConfigFormatException, FileNotFoundException{
@@ -310,5 +315,13 @@ public class Board {
 	
 	public Set<BoardCell> getTargets() {
 		return targets;
+	}
+	
+	public ComputerPlayer[] getComputerPlayers() {
+		return computerPlayers;
+	}
+	
+	public HumanPlayer gethumanPlayer() {
+		return humanPlayer;
 	}
 }
