@@ -46,19 +46,28 @@ public class DEDPCluePlayerTests {
 	@Test
 	public void loadingTheDeckOfCards(){
 		Set<Card> deckOfCards = board.getDeckOfCards();
-		for(Card currentCard: deckOfCards){
-			System.out.println(currentCard);
-		}
+
 		assertEquals(21, deckOfCards.size());
 		assertEquals(9, board.getNumberOfRoomCards());
 		assertEquals(6, board.getNumberOfWeaponCards());
 		assertEquals(6, board.getNumberOfPersonCards());
-		Card tempCard1 = new Card("John Doe", CardType.PERSON);
-		assert(deckOfCards.contains(tempCard1));
-		Card tempCard2 = new Card("Cross Bow", CardType.WEAPON);
-		assert(deckOfCards.contains(tempCard2));
-		Card tempCard3 = new Card("Gallery", CardType.ROOM);
-		assert(deckOfCards.contains(tempCard3));
+		boolean a = false;
+		boolean b = false;
+		boolean c = false;
+		for(Card currentCard: deckOfCards){
+			if(currentCard.getCardName().equals("John Doe")){
+				a = true;
+			}else if(currentCard.getCardName().equals("Cross Bow")){
+				b = true;
+			}else if(currentCard.getCardName().equals("Gallery")){
+				c = true;
+			}else{
+				
+			}
+		}
+		assert (a);
+		assert (b);
+		assert (c);
 		
 	}
 	

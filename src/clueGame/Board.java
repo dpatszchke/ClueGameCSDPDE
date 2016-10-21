@@ -231,7 +231,6 @@ public class Board {
 
 			}
 		}
-		System.out.println(adjMatrix);
 	}
 	
 	public void calcTargets(int i, int j, int pathLength) {
