@@ -7,7 +7,7 @@ public class Player {
 	private String playerName;
 	private int row;
 	private int column;
-	private ArrayList<Card> playerCards;
+	private ArrayList<Card> playerCards = new ArrayList<Card>();
 	private Color color;
 	
 	
@@ -17,6 +17,10 @@ public class Player {
 		this.row = row;
 		this.column = column;
 		this.color = color;
+	}
+	
+	public void addCard(Card currentCard){
+		playerCards.add(currentCard);
 	}
 
 	public String getPlayerName() {
