@@ -31,6 +31,7 @@ public class Board {
 	private HumanPlayer humanPlayer;
 	//private ComputerPlayer[] computerPlayers;
 	private ComputerPlayer[] computerPlayers;
+	private Card[] dealtCards;
 	
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
@@ -48,6 +49,7 @@ public class Board {
 			loadBoardConfig();
 			loadCardConfig();
 			loadPlayerConfig();
+			dealCards();
 			
 		} catch (BadConfigFormatException e) {
 			System.out.println(e);
@@ -57,6 +59,12 @@ public class Board {
 		}
 		
 		calcAdjacencies();
+	}
+	
+	public void dealCards(){
+		for(Card currentCard: deckOfCards){
+			
+		}
 	}
 	
 	public void loadPlayerConfig() throws BadConfigFormatException, FileNotFoundException{
@@ -353,5 +361,10 @@ public class Board {
 		}
 			
 		return counter;
+	}
+	
+public Card[] getDealtCards() {
+		
+		return dealtCards;
 	}
 }

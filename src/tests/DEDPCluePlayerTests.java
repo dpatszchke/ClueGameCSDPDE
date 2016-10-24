@@ -71,6 +71,28 @@ public class DEDPCluePlayerTests {
 		
 	}
 	
-	
+	@Test
+	public void dealingOfTheCards(){
+		Card[] dealtCards = board.getDealtCards();
+		ComputerPlayer[] temp = board.getComputerPlayers();
+		
+		assert(board.gethumanPlayer().getPlayerCards().size() == 4 || board.gethumanPlayer().getPlayerCards().size() == 3);
+		for (int i = 0;i <5; i++){
+			assert(temp[i].getPlayerCards().size() == 4 || temp[i].getPlayerCards().size() == 3);
+		}
+		
+		assertEquals(21, dealtCards.length);
+		for (int i = 0; i < 21; i++){
+			Card tempCard = dealtCards[i];
+			for (int j = 0; j < 21; j++){
+				if(j == i){	
+				}else{
+					assert(tempCard != dealtCards[j]);
+				}
+			}
+		}
+	}
 
+	
+	
 }
