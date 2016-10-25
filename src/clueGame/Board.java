@@ -32,6 +32,7 @@ public class Board {
 	//private ComputerPlayer[] computerPlayers;
 	private ComputerPlayer[] computerPlayers;
 	private Card[] dealtCards = new Card[21];
+	private static Solution theAnswer;
 	
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
@@ -294,6 +295,10 @@ public class Board {
 		playerConfigFile = players;
 	}
 	
+	public boolean checkAccusation(Solution accusation){
+		return false;
+	}
+	
 	public BoardCell getCellAt(int row, int col) {
 		return board[row][col];
 	}
@@ -367,4 +372,13 @@ public class Board {
 	public Card[] getDealtCards() {
 		return dealtCards;
 	}
+	public static Solution getTheAnswer() {
+		return theAnswer;
+	}
+	public static void setTheAnswer(String person, String room, String weapon) {
+		theAnswer.person = person;
+		theAnswer.room = room;
+		theAnswer.weapon = weapon;
+	}
+	
 }

@@ -7,7 +7,8 @@ public class Player {
 	private String playerName;
 	private int row;
 	private int column;
-	private ArrayList<Card> playerCards = new ArrayList<Card>();
+	private ArrayList<Card> myCards = new ArrayList<Card>();
+	private ArrayList<Card> seenCards;
 	private Color color;
 	
 	
@@ -20,7 +21,7 @@ public class Player {
 	}
 	
 	public void addCard(Card currentCard){
-		playerCards.add(currentCard);
+		myCards.add(currentCard);
 	}
 
 	public String getPlayerName() {
@@ -36,7 +37,7 @@ public class Player {
 	}
 
 	public ArrayList<Card> getPlayerCards() {
-		return playerCards;
+		return myCards;
 	}
 
 	public Color getColor() {
