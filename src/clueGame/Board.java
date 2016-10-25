@@ -57,7 +57,6 @@ public class Board {
 		} catch (FileNotFoundException e) {
 			System.out.println(e);
 		}
-		
 		calcAdjacencies();
 	}
 	
@@ -89,7 +88,6 @@ public class Board {
 				computerPlayers[c - 1] = new ComputerPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]));
 			}
 			c = c + 1;
-			
 		}
 		in.close();
 	}
@@ -193,7 +191,6 @@ public class Board {
 	
 	public void calcAdjacencies() {	
 		adjMatrix = new HashMap<BoardCell, Set<BoardCell>>();
-
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numCols; j++) {
 				//Make a new set to store the adjacent cells
@@ -226,7 +223,6 @@ public class Board {
 					continue;					
 				}
 				
-				
 				//Otherwise, we're on a walkway. Get adjacencies for other walkways
 				if ((i != 0) && getCellAt(i-1,j).isWalkway()) adjCells.add(getCellAt(i-1,j));
 				if ((i != (numRows-1)) && getCellAt(i+1,j).isWalkway()) adjCells.add(getCellAt(i+1,j));
@@ -244,7 +240,6 @@ public class Board {
 					if (getCellAt(i,j+1).getDoorDirection().equals(DoorDirection.LEFT)) adjCells.add(getCellAt(i,j+1));
 
 				adjMatrix.put(getCellAt(i,j), adjCells);			
-
 			}
 		}
 	}
@@ -275,10 +270,8 @@ public class Board {
 				newAdjCell = getAdjList(c.getRow(), c.getColumn());
 				findAllTargets(c, pathLength-1, visited, newAdjCell);
 			}
-			
 			visited.remove(c);
 		}
-		
 	}
 	
 	public Color convertColor(String strColor) {
@@ -336,10 +329,11 @@ public class Board {
 	public HumanPlayer gethumanPlayer() {
 		return humanPlayer;
 	}
+	
 	public Set<Card> getDeckOfCards() {
-		
 		return deckOfCards;
 	}
+	
 	public Object getNumberOfRoomCards() {
 		int counter = 0;
 		for(Card currentCard: deckOfCards){
@@ -347,9 +341,9 @@ public class Board {
 				counter = counter + 1;
 			}
 		}
-			
 		return counter;
 	}
+	
 	public Object getNumberOfWeaponCards() {
 		int counter = 0;
 		for(Card currentCard: deckOfCards){
@@ -357,9 +351,9 @@ public class Board {
 				counter = counter + 1;
 			}
 		}
-			
 		return counter;
 	}
+	
 	public Object getNumberOfPersonCards() {
 		int counter = 0;
 		for(Card currentCard: deckOfCards){
@@ -367,12 +361,10 @@ public class Board {
 				counter = counter + 1;
 			}
 		}
-			
 		return counter;
 	}
 	
-public Card[] getDealtCards() {
-		
+	public Card[] getDealtCards() {
 		return dealtCards;
 	}
 }
