@@ -296,7 +296,11 @@ public class Board {
 	}
 	
 	public boolean checkAccusation(Solution accusation){
-		return false;
+		if((theAnswer.person == accusation.person) && (theAnswer.room == accusation.room) && (theAnswer.weapon == accusation.weapon)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	public BoardCell getCellAt(int row, int col) {
@@ -376,9 +380,7 @@ public class Board {
 		return theAnswer;
 	}
 	public static void setTheAnswer(String person, String room, String weapon) {
-		theAnswer.person = person;
-		theAnswer.room = room;
-		theAnswer.weapon = weapon;
+		theAnswer = new Solution(person, room, weapon);
 	}
 	
 }
