@@ -81,8 +81,6 @@ public class DEDPCluePlayerTests {
 		for (int i = 0;i <5; i++){
 			assert(temp[i].getPlayerCards().size() == 4 || temp[i].getPlayerCards().size() == 3);
 		}
-		
-		System.out.println(dealtCards.length);
 
 		assertEquals(21, dealtCards.length);
 		for (int i = 0; i < 21; i++){
