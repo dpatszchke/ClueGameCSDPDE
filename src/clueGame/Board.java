@@ -48,8 +48,9 @@ public class Board {
 			
 			loadRoomConfig();
 			loadBoardConfig();
+			//loadCardConfig();
 			loadPlayerConfig();
-			loadCardConfig();
+			
 			
 			
 		} catch (BadConfigFormatException e) {
@@ -76,6 +77,9 @@ public class Board {
 	}
 	
 	public void loadPlayerConfig() throws BadConfigFormatException, FileNotFoundException{
+		
+		loadCardConfig();
+		
 		computerPlayers = new ComputerPlayer[5];
 		FileReader playerFile = new FileReader(playerConfigFile);
 		Scanner in = new Scanner(playerFile); 
@@ -91,6 +95,7 @@ public class Board {
 			c = c + 1;
 		}
 		in.close();
+		dealCards();
 	}
 	
 	public void loadCardConfig() throws BadConfigFormatException, FileNotFoundException{
@@ -116,7 +121,7 @@ public class Board {
 					break;
 			}
 		}
-		dealCards();
+		
 	}
 	
 	public void loadRoomConfig() throws BadConfigFormatException, FileNotFoundException {

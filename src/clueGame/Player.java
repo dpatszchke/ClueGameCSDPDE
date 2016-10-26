@@ -2,7 +2,9 @@ package clueGame;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Player {
@@ -10,7 +12,7 @@ public class Player {
 	private int row;
 	private int column;
 	private ArrayList<Card> myCards = new ArrayList<Card>();
-	private Set<Card> unseenCards = new HashSet<Card>();
+	protected Map<String, CardType> unseenCards = new HashMap<String, CardType>();
 	private Color color;
 	
 	
@@ -20,7 +22,9 @@ public class Player {
 		this.row = row;
 		this.column = column;
 		this.color = color;
-		this.unseenCards = deck;
+		for(Card currentCard: deck){
+			unseenCards.put(currentCard.getCardName(), currentCard.getCardType());
+		}
 	}
 	
 	public void addCard(Card currentCard){
@@ -30,8 +34,7 @@ public class Player {
 	
 
 	public void deleteCardFromUnseen(Card currentCard){
-		unseenCards.remove(currentCard);
-;
+		unseenCards.remove(currentCard.getCardName());
 	}
 
 	public String getPlayerName() {
@@ -57,5 +60,23 @@ public class Player {
 	public Card dissproveSuggestion(Solution suggestion){
 		return null;
 	}
+	
+	public void removeFromUnseenForOneWeaponandPerson(){
+		unseenCards.clear();
+		Card john = new Card("John Doe", CardType.PERSON);
+		unseenCards.put(john.getCardName(), john.getCardType());
+		Card shot = new Card("Shot Gun", CardType.WEAPON);
+		unseenCards.put(shot.getCardName(), shot.getCardType());
+	}
+
+	public void setRow(int row) {
+		this.row = row;
+	}
+
+	public void setColumn(int column) {
+		this.column = column;
+	}
+	
+	
 
 }
