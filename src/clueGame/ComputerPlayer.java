@@ -6,17 +6,18 @@ import java.util.Set;
 
 public class ComputerPlayer extends Player{
 	private BoardCell lastDoorVisited;
+	private Solution suggesstion;
 	
 	public void setLastCellVisited(BoardCell lastCellVisited) {
-		this.lastDoorVisited = lastDoorVisited;
+		this.lastDoorVisited = lastCellVisited;
 	}
 
 	public BoardCell getLastCellVisited() {
 		return lastDoorVisited;
 	}
 
-	public ComputerPlayer(String n, Color color, int r, int c) {
-		super(n,color, r, c);
+	public ComputerPlayer(String n, Color color, int r, int c, Set<Card> deck) {
+		super(n,color, r, c, deck);
 	}
 	
 	public BoardCell pickLocation(Set<BoardCell> targets){
@@ -30,7 +31,6 @@ public class ComputerPlayer extends Player{
 		Random rn = new Random();
 		int i = Math.abs(rn.nextInt() % length);
 		int j = 0;
-		System.out.println(i);
 		for(BoardCell tempTarget : targets){
 			if (j==i) {
 				if (tempTarget.isDoorway()) {
@@ -50,5 +50,11 @@ public class ComputerPlayer extends Player{
 	public void createSuggestion(){
 		
 	}
+
+	public Solution getSuggesstion() {
+		return suggesstion;
+	}
+	
+	
 
 }

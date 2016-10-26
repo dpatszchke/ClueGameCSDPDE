@@ -70,7 +70,7 @@ public class BoardCell implements Comparable<BoardCell> {
 
 	@Override
 	public int compareTo(BoardCell o) {
-		if((row == o.row) && (column == o.column) && (initial == o.initial) && (doorDir == o.doorDir)){
+		if((row == o.row) && (column == o.column)){
 			return 0;
 		}
 		return -1;

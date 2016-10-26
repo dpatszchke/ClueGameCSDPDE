@@ -84,9 +84,9 @@ public class Board {
 			String Line = in.nextLine();
 			String[] playerInfo = Line.split(",");
 			if (c == 0) {
-				humanPlayer = new HumanPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]));
+				humanPlayer = new HumanPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]), deckOfCards);
 			} else {
-				computerPlayers[c - 1] = new ComputerPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]));
+				computerPlayers[c - 1] = new ComputerPlayer(playerInfo[0], convertColor(playerInfo[1]) ,Integer.parseInt(playerInfo[2]), Integer.parseInt(playerInfo[3]), deckOfCards);
 			}
 			c = c + 1;
 		}
@@ -301,6 +301,10 @@ public class Board {
 		}else{
 			return false;
 		}
+	}
+	
+	public Card handleSuggestion(Solution suggestion){
+		return null;
 	}
 	
 	public BoardCell getCellAt(int row, int col) {
