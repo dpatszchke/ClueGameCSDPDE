@@ -88,7 +88,6 @@ public class ComputerPlayer extends Player{
 		 while(ro.hasNext()){
 			Map.Entry pair = (Map.Entry)ro.next();
 			if(pair.getKey().toString().equals(String.valueOf(roomLocation.getInitial()))){
-				System.out.println(pair.getValue());
 				room = pair.getValue().toString();
 			}
 		}
@@ -99,6 +98,10 @@ public class ComputerPlayer extends Player{
 
 	public Solution getSuggestion() {
 		return suggestion;
+	}
+
+	public void setSuggestion(String p, String r, String w) {
+		suggestion =new Solution(p,r,w);
 	}
 	
 }

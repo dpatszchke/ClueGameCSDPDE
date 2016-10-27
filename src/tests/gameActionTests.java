@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import clueGame.Board;
 import clueGame.BoardCell;
+import clueGame.Card;
+import clueGame.CardType;
 import clueGame.ComputerPlayer;
 import clueGame.Solution;
 
@@ -30,7 +32,6 @@ public class gameActionTests {
 		ComputerPlayer player = new ComputerPlayer("John Doe", Color.blue , 4 , 19, board.getDeckOfCards());
 		board.calcTargets(4, 19, 3);
 		BoardCell tempDoor = board.getCellAt(7, 19);
-		//System.out.println(player.pickLocation(board.getTargets()));
 		for (int i=0; i<100; i++) {		
 			player.setLastCellVisited(board.getCellAt(2, 12));
 			assertEquals(tempDoor, player.pickLocation(board.getTargets()));
@@ -107,11 +108,29 @@ public class gameActionTests {
 	@Test
 	public void dissprovingSuggesstion() {
 		ComputerPlayer[] computerPlayers = board.getComputerPlayers();
+		computerPlayers[0].setSuggestion("Jim Buck", "Gym", "Shot Gun");
 		
-		assertEquals(null, computerPlayers[0].dissproveSuggestion(suggestion));
-		Card tempCard = new Card("Jim Buck")
-		assertEquals()
+		computerPlayers[0].setUpDissprovingSuggestionTestWithNoMatch();
+		assertEquals(null, computerPlayers[0].dissproveSuggestion(computerPlayers[0].getSuggestion()));
 		
+		computerPlayers[0].setUpDissprovingSuggestionTestWithOneMatch();
+		Card tempCard = new Card("Jim Buck", CardType.PERSON);
+		assertEquals(tempCard, computerPlayers[0].dissproveSuggestion(computerPlayers[0].getSuggestion()));
+		
+		computerPlayers[0].setUpDissprovingSuggestionTestWithMultipleMatches();
+		boolean shotGun = false;
+		boolean jimBuck = false;
+		computerPlayers[0].removeFromUnseenForMultipleWeaponsAndPersons();
+		for(int i = 0; i < 25; i++){
+			if (computerPlayers[0].dissproveSuggestion(computerPlayers[0].getSuggestion()).getCardName() == "Shot Gun"){
+				shotGun = true;
+			}
+			if (computerPlayers[0].dissproveSuggestion(computerPlayers[0].getSuggestion()).getCardName() == "Jim Buck"){
+				jimBuck = true;
+			}
+		}
+		assert(jimBuck);
+		assert(shotGun);
 	}
 	
 	@Test

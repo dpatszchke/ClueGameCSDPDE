@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 public class Player {
@@ -58,7 +59,23 @@ public class Player {
 	}
 	
 	public Card dissproveSuggestion(Solution suggestion){
-		return null;
+		ArrayList<Card> dissprovingCards = new ArrayList<Card>();
+		for(Card currentCard : myCards){
+			if((currentCard.getCardName().equals(suggestion.person)) || (currentCard.getCardName().equals(suggestion.room) || (currentCard.getCardName().equals(suggestion.weapon)))){
+				dissprovingCards.add(currentCard);
+			}
+		}
+		int length = dissprovingCards.size();
+		switch(length){
+		case 0:
+			return null;
+		case 1:
+			return dissprovingCards.get(0);
+		default:
+			Random rn = new Random();
+			int i = Math.abs(rn.nextInt() % length);
+			return dissprovingCards.get(i);
+		}
 	}
 	
 	public void removeFromUnseenForOneWeaponandPerson(){
@@ -79,6 +96,24 @@ public class Player {
 		unseenCards.put(black.getCardName(), black.getCardType());
 		Card shot = new Card("Shot Gun", CardType.WEAPON);
 		unseenCards.put(shot.getCardName(), shot.getCardType());
+	}
+	
+	public void setUpDissprovingSuggestionTestWithNoMatch(){
+		myCards.clear();
+	}
+	
+	public void setUpDissprovingSuggestionTestWithOneMatch(){
+		myCards.clear();
+		Card tempCard = new Card("Jim Buck", CardType.PERSON);
+		myCards.add(tempCard);
+	}
+	
+	public void setUpDissprovingSuggestionTestWithMultipleMatches(){
+		myCards.clear();
+		Card tempCard = new Card("Jim Buck", CardType.PERSON);
+		myCards.add(tempCard);
+		Card tempCard2 = new Card("Shot Gun", CardType.WEAPON);
+		myCards.add(tempCard2);
 	}
 
 	public void setRow(int row) {
