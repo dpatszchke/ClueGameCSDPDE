@@ -71,8 +71,8 @@ public class Player {
 	
 	public void removeFromUnseenForMultipleWeaponsAndPersons(){
 		unseenCards.clear();
-		Card joe = new Card("Joe Buck", CardType.PERSON);
-		unseenCards.put(joe.getCardName(), joe.getCardType());
+		Card  jim = new Card("Jim Buck", CardType.PERSON);
+		unseenCards.put(jim.getCardName(), jim.getCardType());
 		Card john = new Card("John Doe", CardType.PERSON);
 		unseenCards.put(john.getCardName(), john.getCardType());
 		Card black = new Card("Black Powder Rifle", CardType.WEAPON);

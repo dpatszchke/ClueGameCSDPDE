@@ -106,7 +106,11 @@ public class gameActionTests {
 	
 	@Test
 	public void dissprovingSuggesstion() {
-		fail();
+		ComputerPlayer[] computerPlayers = board.getComputerPlayers();
+		
+		assertEquals(null, computerPlayers[0].dissproveSuggestion(suggestion));
+		Card tempCard = new Card("Jim Buck")
+		assertEquals()
 		
 	}
 	
@@ -133,15 +137,15 @@ public class gameActionTests {
 		boolean shotGun = false;
 		boolean blackPowderRifle = false;
 		boolean johnDoe = false;
-		boolean joeBuck = false;
+		boolean jimBuck = false;
 		computerPlayers[0].removeFromUnseenForMultipleWeaponsAndPersons();
 		for(int i = 0; i < 25; i++){
 			computerPlayers[0].createSuggestion(board.getCellAt(computerPlayers[0].getRow(),computerPlayers[0].getColumn()), board);
 			if (computerPlayers[0].getSuggestion().person == "John Doe"){
 				johnDoe = true;
 			}
-			if (computerPlayers[0].getSuggestion().person == "Joe Buck"){
-				joeBuck = true;
+			if (computerPlayers[0].getSuggestion().person == "Jim Buck"){
+				jimBuck = true;
 			}
 			if (computerPlayers[0].getSuggestion().weapon == "Black Powder Rifle"){
 				blackPowderRifle = true;
@@ -152,7 +156,7 @@ public class gameActionTests {
 		}
 		assert(shotGun);
 		assert(blackPowderRifle);
-		assert(joeBuck);
+		assert(jimBuck);
 		assert(johnDoe);
 	}
 }

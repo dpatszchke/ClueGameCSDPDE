@@ -87,8 +87,6 @@ public class ComputerPlayer extends Player{
 		 Iterator ro = (board.getLegend()).entrySet().iterator();
 		 while(ro.hasNext()){
 			Map.Entry pair = (Map.Entry)ro.next();
-			System.out.println(pair.getKey().toString() + "1");
-			System.out.println(String.valueOf(roomLocation.getInitial()) + "2");
 			if(pair.getKey().toString().equals(String.valueOf(roomLocation.getInitial()))){
 				System.out.println(pair.getValue());
 				room = pair.getValue().toString();
