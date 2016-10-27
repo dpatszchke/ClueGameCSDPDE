@@ -137,7 +137,24 @@ public class gameActionTests {
 	
 	@Test
 	public void handlingSuggestion() {
-		fail();
+		board.setUpHandlingSuggestionEnviroment();
+		Solution nobodyCanDisprove = new Solution(,,);
+		assertequals(null, board.handleSuggestion(nobodyCanDisprove));
+		
+		Solution accuserCanDissprove = new Solution(,,);
+		assertequals(null, board.handleSuggestion(accuserCanDissprove));
+		
+		Solution humanCanDissprove = new Solution(,,);
+		assertequals("", board.handleSuggestion(humanCanDissprove));
+		
+		Solution humanCanDissproveButIsAccuser = new Solution(,,);
+		assertequals("", board.handleSuggestion(humanCanDissproveButIsAccuser));
+		
+		Solution twoPlayersCandissprove = new Solution(,,);
+		assertequals("", board.handleSuggestion(twoPlayersCandissprove));
+		
+		Solution humanAndComputerCanDissprove = new Solution(,,);
+		assertequals("", board.handleSuggestion(humanCanDissprove));
 	}
 	
 	@Test

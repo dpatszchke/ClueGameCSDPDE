@@ -391,5 +391,18 @@ public class Board {
 	public static void setTheAnswer(String person, String room, String weapon) {
 		theAnswer = new Solution(person, room, weapon);
 	}
+	public void setUpHandlingSuggestionEnviroment() {
+		HumanPlayer humanPlayer = new HumanPlayer("Jim Buck", Color.BLACK, 0,4,deckOfCards);
+		Card humansCard = new Card("Shot Gun", CardType.WEAPON);
+		humanPlayer.addCard(humansCard);
+		
+		ComputerPlayer testComp1 = new ComputerPlayer("John Doe", Color.blue,0,11, deckOfCards);
+		Card testComp1Card = new Card("Gym", CardType.ROOM);
+		testComp1.addCard(testComp1Card);
+		
+		ComputerPlayer testComp2 = new ComputerPlayer("Jane Doe", Color.magenta,13,23, deckOfCards);
+		Card testComp2Card = new Card("James Fawn", CardType.PERSON);
+		testComp2.addCard(testComp2Card);
+	}
 	
 }
