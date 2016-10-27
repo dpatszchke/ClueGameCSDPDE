@@ -308,7 +308,23 @@ public class Board {
 		}
 	}
 	
-	public Card handleSuggestion(Solution suggestion){
+	public Card handleSuggestion(Solution suggestion, ArrayList<Player> players, int accuserPostion){
+		for(int i = accuserPostion; i < players.size(); i++){
+			Card tempCard = players.get(i).dissproveSuggestion(suggestion);
+			if(i == accuserPostion){
+				
+			}else if (tempCard != null){
+				return tempCard;
+			}
+		}
+		for(int i = 0; i < accuserPostion; i++){
+			Card tempCard = players.get(i).dissproveSuggestion(suggestion);
+			if(i == accuserPostion){
+				
+			}else if (tempCard != null){
+				return tempCard;
+			}
+		}
 		return null;
 	}
 	
@@ -391,7 +407,9 @@ public class Board {
 	public static void setTheAnswer(String person, String room, String weapon) {
 		theAnswer = new Solution(person, room, weapon);
 	}
-	public void setUpHandlingSuggestionEnviroment() {
+	public ArrayList<Player> setUpHandlingSuggestionEnviroment() {
+		
+		ArrayList<Player> testPlayers = new ArrayList<Player>();
 		HumanPlayer humanPlayer = new HumanPlayer("Jim Buck", Color.BLACK, 0,4,deckOfCards);
 		Card humansCard = new Card("Shot Gun", CardType.WEAPON);
 		humanPlayer.addCard(humansCard);
@@ -403,6 +421,12 @@ public class Board {
 		ComputerPlayer testComp2 = new ComputerPlayer("Jane Doe", Color.magenta,13,23, deckOfCards);
 		Card testComp2Card = new Card("James Fawn", CardType.PERSON);
 		testComp2.addCard(testComp2Card);
+		
+		testPlayers.add(humanPlayer);
+		testPlayers.add(testComp1);
+		testPlayers.add(testComp2);
+		
+		return testPlayers;
 	}
 	
 }
