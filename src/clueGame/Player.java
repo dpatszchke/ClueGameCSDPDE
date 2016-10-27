@@ -68,6 +68,18 @@ public class Player {
 		Card shot = new Card("Shot Gun", CardType.WEAPON);
 		unseenCards.put(shot.getCardName(), shot.getCardType());
 	}
+	
+	public void removeFromUnseenForMultipleWeaponsAndPersons(){
+		unseenCards.clear();
+		Card joe = new Card("Joe Buck", CardType.PERSON);
+		unseenCards.put(joe.getCardName(), joe.getCardType());
+		Card john = new Card("John Doe", CardType.PERSON);
+		unseenCards.put(john.getCardName(), john.getCardType());
+		Card black = new Card("Black Powder Rifle", CardType.WEAPON);
+		unseenCards.put(black.getCardName(), black.getCardType());
+		Card shot = new Card("Shot Gun", CardType.WEAPON);
+		unseenCards.put(shot.getCardName(), shot.getCardType());
+	}
 
 	public void setRow(int row) {
 		this.row = row;

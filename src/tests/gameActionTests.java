@@ -30,7 +30,6 @@ public class gameActionTests {
 		ComputerPlayer player = new ComputerPlayer("John Doe", Color.blue , 4 , 19, board.getDeckOfCards());
 		board.calcTargets(4, 19, 3);
 		BoardCell tempDoor = board.getCellAt(7, 19);
-		System.out.println(tempDoor);
 		//System.out.println(player.pickLocation(board.getTargets()));
 		for (int i=0; i<100; i++) {		
 			player.setLastCellVisited(board.getCellAt(2, 12));
@@ -120,7 +119,7 @@ public class gameActionTests {
 	public void creatingSuggestion() {
 		ComputerPlayer[] computerPlayers = board.getComputerPlayers();
 		
-		computerPlayers[0].setColumn(3);
+		computerPlayers[0].setRow(3);
 		computerPlayers[0].setColumn(2);
 		computerPlayers[0].createSuggestion(board.getCellAt(computerPlayers[0].getRow(),computerPlayers[0].getColumn()), board);
 		assertEquals("Gym", computerPlayers[0].getSuggestion().room);
@@ -135,6 +134,7 @@ public class gameActionTests {
 		boolean blackPowderRifle = false;
 		boolean johnDoe = false;
 		boolean joeBuck = false;
+		computerPlayers[0].removeFromUnseenForMultipleWeaponsAndPersons();
 		for(int i = 0; i < 25; i++){
 			computerPlayers[0].createSuggestion(board.getCellAt(computerPlayers[0].getRow(),computerPlayers[0].getColumn()), board);
 			if (computerPlayers[0].getSuggestion().person == "John Doe"){

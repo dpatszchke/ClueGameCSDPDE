@@ -59,29 +59,38 @@ public class ComputerPlayer extends Player{
 		ArrayList<String> weaponList = new ArrayList<String>();
 		Iterator it = unseenCards.entrySet().iterator();
 		while(it.hasNext()){
-			Map.Entry pair = (Map.Entry)it.next();
-			if(pair.getValue() == CardType.PERSON){
-				personList.add(pair.getKey().toString());
+			Map.Entry pair1 = (Map.Entry)it.next();
+			if(pair1.getValue() == CardType.PERSON){
+				personList.add(pair1.getKey().toString());
 			}
 		}
-		person = personList.get(0);
+		int length = personList.size();
+		Random rn = new Random();
+		int i = Math.abs(rn.nextInt() % length);
+		person = personList.get(i);
 		
 		Iterator it2 = unseenCards.entrySet().iterator();
 		while(it2.hasNext()){
-			Map.Entry pair = (Map.Entry)it2.next();
-			if(pair.getValue() == CardType.WEAPON){
-				weaponList.add(pair.getKey().toString());
+			Map.Entry pair2 = (Map.Entry)it2.next();
+			if(pair2.getValue() == CardType.WEAPON){
+				weaponList.add(pair2.getKey().toString());
 			}
 		}
-		weapon = weaponList.get(0);
+		int length2 = weaponList.size();
+		Random rn2 = new Random();
+		int j = Math.abs(rn.nextInt() % length);
+		weapon = weaponList.get(j);
 		
 		 Map<Character, String> rooms = new TreeMap<Character, String>();
 		 rooms = board.getLegend();
 		 
-		 Iterator ro = unseenCards.entrySet().iterator();
+		 Iterator ro = (board.getLegend()).entrySet().iterator();
 		 while(ro.hasNext()){
 			Map.Entry pair = (Map.Entry)ro.next();
-			if(pair.getKey().toString() == String.valueOf(roomLocation.getInitial())){
+			System.out.println(pair.getKey().toString() + "1");
+			System.out.println(String.valueOf(roomLocation.getInitial()) + "2");
+			if(pair.getKey().toString().equals(String.valueOf(roomLocation.getInitial()))){
+				System.out.println(pair.getValue());
 				room = pair.getValue().toString();
 			}
 		}
