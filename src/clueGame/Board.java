@@ -309,20 +309,17 @@ public class Board {
 	}
 	
 	public Card handleSuggestion(Solution suggestion, ArrayList<Player> players, int accuserPostion){
-		for(int i = accuserPostion; i < players.size(); i++){
-			Card tempCard = players.get(i).dissproveSuggestion(suggestion);
-			if(i == accuserPostion){
-				
-			}else if (tempCard != null){
-				return tempCard;
+		Card returnCard;
+		for(Player player:players){
+			returnCard = player.dissproveSuggestion(suggestion);
+			if (returnCard != null){
+				return returnCard;
 			}
 		}
 		for(int i = 0; i < accuserPostion; i++){
-			Card tempCard = players.get(i).dissproveSuggestion(suggestion);
-			if(i == accuserPostion){
-				
-			}else if (tempCard != null){
-				return tempCard;
+			returnCard = players.get(i).dissproveSuggestion(suggestion);
+			if (returnCard != null){
+				return returnCard;
 			}
 		}
 		return null;
