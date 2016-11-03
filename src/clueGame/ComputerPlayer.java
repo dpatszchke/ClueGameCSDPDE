@@ -24,7 +24,7 @@ public class ComputerPlayer extends Player{
 		super(n,color, r, c, deck);
 	}
 	
-	public BoardCell pickLocation(Set<BoardCell> targets){
+	public BoardCell pickLocation(Set<BoardCell> targets){ //answer never set
 		for(BoardCell currentTarget : targets){
 			if(currentTarget.isDoorway() && !currentTarget.equals(lastDoorVisited)){
 				lastDoorVisited = currentTarget;
@@ -33,16 +33,16 @@ public class ComputerPlayer extends Player{
 		}
 		int length = targets.size();
 		Random rn = new Random();
-		int i = Math.abs(rn.nextInt() % length);
-		int j = 0;
-		for(BoardCell tempTarget : targets){
-			if (j==i) {
-				if (tempTarget.isDoorway()) {
-					lastDoorVisited = tempTarget;
+		int randomIndex = Math.abs(rn.nextInt(length));
+		int targetIndex = 0;
+		for(BoardCell target : targets){
+			if (targetIndex==randomIndex) {
+				if (target.isDoorway()) {
+					lastDoorVisited = target;
 				}
-				return tempTarget;
+				return target;
 			}
-			j++;
+			targetIndex++;
 		}
 		return null;
 	}
