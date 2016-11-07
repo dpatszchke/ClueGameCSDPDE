@@ -183,7 +183,10 @@ public class Board {
 			
 			for (int j = 0; j < numCols; j++) { //And for each column in the row
 				String currSpace = rowSpaces[j]; //Get its room data
-				if (!rooms.containsKey(currSpace.charAt(0))) throw new BadConfigFormatException("Undefined room/area"); //If that room's undefined, that's bad
+				if (!rooms.containsKey(currSpace.charAt(0))) {
+					fin.close();
+					throw new BadConfigFormatException("Undefined room/area"); //If that room's undefined, that's bad
+				}
 				
 				else {
 					board[i][j] = new BoardCell(i,j,currSpace.charAt(0)); //Otherwise, initialize the individual cell with row, col and room initial
