@@ -316,6 +316,7 @@ public class Board {
 	
 	public Card handleSuggestion(Solution suggestion, ArrayList<Player> players, int accuserPostion){
 		Card returnCard;
+		//looping through players and seeing if one of the players returns a card
 		for(Player player:players){
 			returnCard = player.dissproveSuggestion(suggestion);
 			if (returnCard != null){
@@ -410,6 +411,7 @@ public class Board {
 	public static void setTheAnswer(String person, String room, String weapon) {
 		theAnswer = new Solution(person, room, weapon);
 	}
+	
 	public ArrayList<Player> setUpHandlingSuggestionEnviroment() {
 		
 		ArrayList<Player> testPlayers = new ArrayList<Player>();

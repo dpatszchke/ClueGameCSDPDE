@@ -69,8 +69,8 @@ public class BoardCell implements Comparable<BoardCell> {
 
 
 	@Override
-	public int compareTo(BoardCell o) {
-		if((row == o.row) && (column == o.column)){
+	public int compareTo(BoardCell cellPassed) {
+		if((row == cellPassed.row) && (column == cellPassed.column)){
 			return 0;
 		}
 		return -1;
