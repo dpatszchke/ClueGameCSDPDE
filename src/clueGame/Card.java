@@ -4,12 +4,9 @@ public class Card{
 	private String cardName;
 	private CardType cardType;
 	
-	
-
 	public String getCardName() {
 		return cardName;
 	}
-
 
 
 	public CardType getCardType() {
@@ -17,13 +14,11 @@ public class Card{
 	}
 
 
-
 	public Card(String cardName, CardType cardType) {
 		super();
 		this.cardName = cardName;
 		this.cardType = cardType;
 	}
-
 
 
 	public boolean equals(){
@@ -37,10 +32,7 @@ public class Card{
 		return "Card [cardName=" + cardName + ", cardType=" + cardType + "]";
 	}
 
-
-
-
-
+	//compares two cards
 	@Override
 	public boolean equals(Object obj) {
 		Card other = (Card) obj;
