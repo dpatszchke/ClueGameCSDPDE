@@ -300,6 +300,13 @@ public class Board {
 		playerConfigFile = players;
 	}
 	
+	public void setConfigFiles(String boardCSV, String legend) {
+		boardConfigFile = boardCSV;
+		roomConfigFile = legend;
+		cardsConfigFile = "";
+		playerConfigFile = "";
+	}
+	
 	public boolean checkAccusation(Solution accusation){
 		if((theAnswer.person == accusation.person) && (theAnswer.room == accusation.room) && (theAnswer.weapon == accusation.weapon)){
 			return true;
