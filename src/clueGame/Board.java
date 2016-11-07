@@ -137,7 +137,7 @@ public class Board {
 			String roomData = fin.nextLine(); //For each line
 			String[] roomComps = roomData.split(","); //Break it at the commas and store the parts
 			if (!(roomComps[2].equals(card)) && !(roomComps[2].equals(other))) { //If the room isn't a card or other type
-				
+				fin.close();
 				throw new BadConfigFormatException("Bad room classification"); //That's bad
 			}
 			else {
@@ -157,7 +157,10 @@ public class Board {
 			String[] rowSpaces = currRow.split(","); //Break the row at the commas
 			
 			if (rowCounter == 0) setNumColumns(rowSpaces.length); //For the first loop, assume that's the correct length
-			else if (getNumColumns() != rowSpaces.length) throw new BadConfigFormatException("Column mismatch"); //If there's any variance from that, that's bad
+			else if (getNumColumns() != rowSpaces.length) {
+				dim.close();
+				throw new BadConfigFormatException("Column mismatch"); //If there's any variance from that, that's bad
+			}
 			
 			rowCounter++; //Add one to the row count
 		}
