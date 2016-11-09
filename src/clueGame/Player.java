@@ -131,6 +131,7 @@ public class Player {
 		g.setColor(Color.BLACK);
 		g.drawOval(column * 24, row * 24, 24, 24);
 	}
+
 	
 
 }
