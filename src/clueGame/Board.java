@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.lang.reflect.Field;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,7 +14,9 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class Board {
+import javax.swing.JPanel;
+
+public class Board extends JPanel {
 	
 	private int numRows;
 	private int numCols;
@@ -43,6 +46,29 @@ public class Board {
 		return theInstance;
 	}
 		
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numCols; j++) {
+				board[i][j].draw(g, rooms);
+			}
+		}
+		humanPlayer.draw(g);
+		for (ComputerPlayer player : computerPlayers) {
+			player.draw(g);
+		}
+	}
+	
+	public String[] getCards(CardType c) {
+		Set<String> retVal = new HashSet<String>();
+		for(Card card : deckOfCards) {
+			if(card.getCardType().equals(c)) {
+				retVal.add(card.getCardName());
+			}
+		}
+		return retVal.toArray(new String [retVal.size()]);
+	}
+	
 	public void initialize() {
 		try { //Handle board and room configuration in one function; watch for exceptions
 			

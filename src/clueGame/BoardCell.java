@@ -1,7 +1,13 @@
 package clueGame;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.Map;
+
 public class BoardCell implements Comparable<BoardCell> {
 	
+	private static final int WIDTH = 24;
+	private static final int HEIGHT = 24;
 	private int row, column;
 	private char initial;
 	private DoorDirection doorDir;
@@ -21,6 +27,10 @@ public class BoardCell implements Comparable<BoardCell> {
 	
 	public boolean isRoom() {
 		return (Character.toLowerCase(initial) != 'w' && initial != 'C');
+	}
+	
+	public boolean isCenterRoom() {
+		return (initial == 'C');
 	}
 	
 	public boolean isDoorway() {
@@ -49,6 +59,9 @@ public class BoardCell implements Comparable<BoardCell> {
 		case 'L': 
 			doorDir = DoorDirection.LEFT;
 			break;
+		case 'N': 
+			doorDir = DoorDirection.CENTER;
+			break;
 		default:
 		}
 		
@@ -74,6 +87,44 @@ public class BoardCell implements Comparable<BoardCell> {
 			return 0;
 		}
 		return -1;
+	}
+	
+	public void draw(Graphics g, Map<Character, String> rooms) {
+		if (this.isRoom()) {
+			g.setColor(Color.GRAY);
+			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
+		} else if (this.isCenterRoom()) {
+			g.setColor(Color.GRAY);
+			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
+		} else {
+			g.setColor(Color.YELLOW);
+			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
+			g.setColor(Color.BLACK);
+			g.drawRect(column * WIDTH,  row * HEIGHT, WIDTH, HEIGHT);
+		}
+		if (this.isDoorway()) {
+			g.setColor(Color.BLUE);
+			switch (this.getDoorDirection()) {
+			case UP:
+				g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT / 6); break;
+			case DOWN:
+				g.fillRect(column * WIDTH, (row + 1) * HEIGHT - HEIGHT / 6, WIDTH, HEIGHT / 6); break;
+			case LEFT:
+				g.fillRect(column * WIDTH, row * HEIGHT, WIDTH / 6, HEIGHT); break;
+			case RIGHT:
+				g.fillRect((column + 1) * WIDTH - WIDTH / 6, row * HEIGHT, WIDTH / 6, HEIGHT); break;
+			case CENTER:
+				g.setColor(Color.BLACK);
+				String[] splitName = rooms.get(this.getInitial()).split(" ");
+				for (int i = 0; i < splitName.length; i++) {
+					g.drawString(splitName[i], column * WIDTH - WIDTH / 2, row * HEIGHT - (splitName.length - i - 1) * HEIGHT / 2);
+				}
+				break;
+			case NONE:
+				break;
+			}
+		}
+		
 	}
 	
 }
