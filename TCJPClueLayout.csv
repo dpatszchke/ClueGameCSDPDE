@@ -1,6 +1,6 @@
 G,G,G,w,w,R,R,R,R,R,w,w,Y,Y,Y,Y,Y,Y,w,w,L,L,L,L
 G,G,G,w,w,R,R,R,R,R,w,w,Y,Y,Y,Y,Y,Y,w,w,L,L,L,L
-G,G,G,w,w,RL,R,R,R,R,w,w,YL,Y,Y,Y,Y,Y,w,w,L,L,L,L
+G,GN,G,w,w,RL,R,RN,R,R,w,w,YL,Y,YN,Y,Y,Y,w,w,L,L,L,L
 G,G,GR,w,w,R,R,R,R,R,w,w,YL,Y,Y,Y,Y,Y,w,w,L,L,L,L
 G,G,G,w,w,R,R,R,R,R,w,w,Y,Y,Y,Y,Y,Y,w,w,L,L,L,L
 G,G,G,w,w,R,R,RD,R,R,w,w,Y,Y,Y,Y,Y,Y,w,w,L,L,L,L
@@ -10,7 +10,7 @@ w,K,K,K,K,w,C,C,C,C,C,C,C,C,C,C,C,w,w,L,L,L,L,L
 w,K,K,K,K,w,C,C,C,C,C,C,C,C,C,C,C,w,w,L,L,L,L,L
 KU,K,K,K,K,w,C,C,C,C,C,C,C,C,C,C,C,w,w,L,L,L,L,L
 K,K,K,K,K,w,C,C,C,C,C,C,C,C,C,C,C,w,w,L,LD,L,L,L
-K,K,K,K,K,w,C,C,C,C,C,C,C,C,C,C,C,w,w,w,w,w,w,w
+K,K,KN,K,K,w,C,C,C,C,C,C,C,C,C,C,C,w,w,w,w,w,w,w
 K,K,K,K,K,w,C,C,C,C,C,C,C,C,C,C,C,w,w,w,w,w,w,w
 K,K,K,K,K,w,C,C,C,C,C,C,C,C,C,C,C,w,w,O,O,O,O,OU
 K,K,K,K,K,w,C,C,C,C,C,C,C,C,C,C,C,w,w,O,O,O,O,O
@@ -19,7 +19,7 @@ K,K,KD,K,K,w,C,C,C,C,C,C,C,C,C,C,C,w,w,O,O,O,O,O
 w,w,w,w,w,w,C,C,C,w,w,w,w,w,w,w,w,w,w,O,O,O,O,O
 S,S,S,S,S,w,w,w,w,w,w,w,B,B,B,B,B,w,w,OL,O,O,O,O
 S,S,S,S,S,w,PU,PU,PU,w,w,BL,B,B,B,B,B,w,w,O,O,O,O,O
-S,S,S,S,w,w,P,P,P,w,w,B,B,B,B,B,B,w,w,O,O,O,O,O
-S,S,S,S,w,P,P,P,P,P,w,B,B,B,B,B,B,w,w,O,O,O,O,O
+S,S,SN,S,w,w,P,P,P,w,w,B,B,B,B,B,B,w,w,O,O,O,O,O
+S,S,S,S,w,P,P,PN,P,P,w,B,B,BN,B,B,B,w,w,O,O,O,O,O
 S,S,S,S,w,P,P,P,P,P,w,B,B,B,B,B,B,w,w,O,O,O,O,O
 S,S,S,SR,w,P,P,P,P,P,w,B,B,B,B,B,B,w,w,O,O,O,O,O

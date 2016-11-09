@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -103,5 +104,6 @@ public class ComputerPlayer extends Player{
 	public void setSuggestion(String p, String r, String w) {
 		suggestion =new Solution(p,r,w);
 	}
+
 	
 }

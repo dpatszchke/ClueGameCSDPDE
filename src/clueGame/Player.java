@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,11 +11,11 @@ import java.util.Set;
 
 public class Player {
 	private String playerName;
-	private int row;
-	private int column;
+	protected int row;
+	protected int column;
 	private ArrayList<Card> myCards = new ArrayList<Card>();
 	protected Map<String, CardType> unseenCards = new HashMap<String, CardType>();
-	private Color color;
+	protected Color color;
 	
 	
 	
@@ -124,6 +125,12 @@ public class Player {
 		this.column = column;
 	}
 	
+	public void draw(Graphics g) {
+		g.setColor(color);
+		g.fillOval(column * 24, row * 24, 24, 24);
+		g.setColor(Color.BLACK);
+		g.drawOval(column * 24, row * 24, 24, 24);
+	}
 	
 
 }
