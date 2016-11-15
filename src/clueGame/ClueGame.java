@@ -10,19 +10,25 @@ import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
+import experiment.PlayerInterface;
+
 public class ClueGame extends JFrame {
 	private DetectiveGUI detectiveNotes;
 	private boolean toggle;
+	private static PlayerInterface playerI;
+	
 	
 	public ClueGame(Board board) {
 		toggle = false;
 		//basic defaults
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Clue Game");
-		setSize(700, 700);
+		setSize(1400, 900);
 		//additions
 		add(board, BorderLayout.CENTER);
 		add(playerCards(board), BorderLayout.EAST);
+		playerI = new PlayerInterface(board);
+		add(playerI, BorderLayout.SOUTH);
 		JMenuBar file = new JMenuBar();
 		setJMenuBar(file);
 		file.add(createMenu());
@@ -51,7 +57,6 @@ public class ClueGame extends JFrame {
 	    	if(card.getCardType() == CardType.PERSON) {
 	    		JTextField persontf = new JTextField(card.getCardName());
 	    	    personpanel.add(persontf, BorderLayout.CENTER);
-	    	    break;
 	    	}
 	    }
 	    
@@ -62,7 +67,6 @@ public class ClueGame extends JFrame {
 	    	if(card.getCardType() == CardType.ROOM) {
 	    		JTextField roomtf = new JTextField(card.getCardName());
 	    	    roompanel.add(roomtf, BorderLayout.CENTER);
-	    	    break;
 	    	}
 	    }
 	    
@@ -73,7 +77,6 @@ public class ClueGame extends JFrame {
 	    	if(card.getCardType() == CardType.WEAPON) {
 	    		JTextField weapontf = new JTextField(card.getCardName());
 	    	    weaponpanel.add(weapontf, BorderLayout.CENTER);
-	    	    break;
 	    	}
 	    }
 	    

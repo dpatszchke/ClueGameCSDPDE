@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -36,7 +37,7 @@ public class Board extends JPanel {
 	private HumanPlayer humanPlayer;
 	//private ComputerPlayer[] computerPlayers;
 	private ComputerPlayer[] computerPlayers;
-	private Card[] dealtCards = new Card[21];
+	private Card[] dealtCards = new Card[18];
 	private static Solution theAnswer;
 	
 	// variable used for singleton pattern
@@ -93,7 +94,7 @@ public class Board extends JPanel {
 	public void dealCards(){
 		int counter = 0;
 		//TODO add logic to set a solution
-		List<Card> dealList = new ArrayList();
+		List<Card> dealList = new ArrayList<Card>();
 		boolean weaponSwitch = true;
 		boolean roomSwitch = true;
 		boolean personSwitch = true;
@@ -103,36 +104,40 @@ public class Board extends JPanel {
 		
 		for(Card currentCard: deckOfCards){
 			dealList.add(currentCard);
+			
 		}
 		
 		Collections.shuffle(dealList);
-		for(Card card: dealList) {
-			if(weaponSwitch) {
+		Iterator<Card> it = dealList.iterator();
+		while (it.hasNext()) {
+		  Card card = it.next();
+		  if(weaponSwitch) {
 				if(card.getCardType() == CardType.WEAPON) {
-					dealList.remove(card);
+					it.remove();
 					weaponCard = card;
 					weaponSwitch = false;
 				}
 			}
 			if(roomSwitch) {
 				if(card.getCardType() == CardType.ROOM) {
-					dealList.remove(card);
+					it.remove();
 					roomCard = card;
 					roomSwitch = false;
 				}
 			}
 			if(personSwitch) {
 				if(card.getCardType() == CardType.PERSON) {
-					dealList.remove(card);
+					it.remove();
 					personCard = card;
 					personSwitch = false;
 				}
 			}
+			
 		}
 		
 		
 		//THIS IS WHERE THE ERROR WILL BE
-		for(Card currentCard: dealtCards){
+		for(Card currentCard: dealList){
 			if (counter % 6 == 0) {
 				humanPlayer.addCard(currentCard);
 				dealtCards[counter] = currentCard;
@@ -174,6 +179,7 @@ public class Board extends JPanel {
 		Scanner in = new Scanner(cardsFile); 
 		
 		while (in.hasNextLine()) {
+			
 			String Line = in.nextLine();
 			String[] cardInfo = Line.split(", ");
 			switch (cardInfo[1]){

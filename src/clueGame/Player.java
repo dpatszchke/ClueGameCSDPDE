@@ -36,7 +36,9 @@ public class Player {
 	
 
 	public void deleteCardFromUnseen(Card currentCard){
-		unseenCards.remove(currentCard.getCardName());
+		if(currentCard != null) {
+			unseenCards.remove(currentCard.getCardName());
+		}
 	}
 
 	public String getPlayerName() {
