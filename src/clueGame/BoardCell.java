@@ -2,6 +2,7 @@ package clueGame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.Map;
 
 public class BoardCell implements Comparable<BoardCell> {
@@ -10,7 +11,13 @@ public class BoardCell implements Comparable<BoardCell> {
 	private static final int HEIGHT = 24;
 	private int row, column;
 	private char initial;
+	public boolean highlighted;
 	private DoorDirection doorDir;
+	private Rectangle rectangle;
+	
+	public void setHighlight(boolean b) {
+		highlighted = b;
+	}
 	
 	public BoardCell(int row, int column, char initial) {
 		super();
@@ -19,6 +26,7 @@ public class BoardCell implements Comparable<BoardCell> {
 		this.initial = initial;
 		
 		this.doorDir = DoorDirection.NONE;
+		rectangle = new Rectangle(this.column * 24, this.row * 24, 24, 24);
 	}
 	
 	public boolean isWalkway() {
@@ -91,16 +99,29 @@ public class BoardCell implements Comparable<BoardCell> {
 	
 	public void draw(Graphics g, Map<Character, String> rooms) {
 		if (this.isRoom()) {
-			g.setColor(Color.GRAY);
-			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
+			if(highlighted) {
+				g.setColor(Color.CYAN);
+				g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
+			} else {
+				g.setColor(Color.GRAY);
+				g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
+			}
+		
 		} else if (this.isCenterRoom()) {
 			g.setColor(Color.GRAY);
 			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
 		} else {
-			g.setColor(Color.YELLOW);
-			g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
-			g.setColor(Color.BLACK);
-			g.drawRect(column * WIDTH,  row * HEIGHT, WIDTH, HEIGHT);
+			if(highlighted) {
+				g.setColor(Color.CYAN);
+				g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
+				g.setColor(Color.BLACK);
+				g.drawRect(column * WIDTH,  row * HEIGHT, WIDTH, HEIGHT);
+			} else {
+				g.setColor(Color.YELLOW);
+				g.fillRect(column * WIDTH, row * HEIGHT, WIDTH, HEIGHT);
+				g.setColor(Color.BLACK);
+				g.drawRect(column * WIDTH,  row * HEIGHT, WIDTH, HEIGHT);
+			}
 		}
 		if (this.isDoorway()) {
 			g.setColor(Color.BLUE);
@@ -125,6 +146,10 @@ public class BoardCell implements Comparable<BoardCell> {
 			}
 		}
 		
+	}
+
+	public boolean mouseWithin(int x, int y) {
+		return rectangle.contains(x, y);
 	}
 	
 }

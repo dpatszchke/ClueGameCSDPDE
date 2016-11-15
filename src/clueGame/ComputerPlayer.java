@@ -13,6 +13,14 @@ public class ComputerPlayer extends Player{
 	private BoardCell lastDoorVisited;
 	private Solution suggestion;
 	
+	public void move(Board board) {
+		Set<BoardCell> targets = board.getTargets();
+		BoardCell location = pickLocation(targets);
+		setRow(location.getRow());
+		setColumn(location.getColumn());
+		board.repaint();
+	}
+	
 	public void setLastCellVisited(BoardCell lastCellVisited) {
 		this.lastDoorVisited = lastCellVisited;
 	}

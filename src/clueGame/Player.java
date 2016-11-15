@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-public class Player {
+public abstract class Player {
 	private String playerName;
 	protected int row;
 	protected int column;
@@ -17,7 +17,7 @@ public class Player {
 	protected Map<String, CardType> unseenCards = new HashMap<String, CardType>();
 	protected Color color;
 	
-	
+	public abstract void move(Board board);
 	
 	public Player(String playerName, Color color, int row, int column, Set<Card> deck) {
 		this.playerName = playerName;
@@ -127,12 +127,16 @@ public class Player {
 		this.column = column;
 	}
 	
+	
+	
 	public void draw(Graphics g) {
 		g.setColor(color);
 		g.fillOval(column * 24, row * 24, 24, 24);
 		g.setColor(Color.BLACK);
 		g.drawOval(column * 24, row * 24, 24, 24);
 	}
+
+	
 
 	
 

@@ -118,7 +118,7 @@ public class ClueGame extends JFrame {
 	
 	
 	public static void main(String[] args) {
-		Board board = Board.getInstance();
+		Board board = new Board();
 		board.setConfigFiles("TCJPClueLayout.csv", "TCJPClueLayoutLegend.txt", "ClueCards.txt", "Players.txt");
 		board.initialize();
 		ClueGame boardGUI = new ClueGame(board);

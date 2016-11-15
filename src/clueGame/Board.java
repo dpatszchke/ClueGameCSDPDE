@@ -2,6 +2,8 @@ package clueGame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.lang.reflect.Field;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,9 +19,10 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Board extends JPanel {
+public class Board extends JPanel implements MouseListener {
 	
 	private int numRows;
 	private int numCols;
@@ -40,15 +43,38 @@ public class Board extends JPanel {
 	private Card[] dealtCards = new Card[18];
 	private static Solution theAnswer;
 	
-	// variable used for singleton pattern
-	private static Board theInstance = new Board();
-	// ctor is private to ensure only one can be created
-	private Board() {}
-	// this method returns the only Board
-	public static Board getInstance() {
-		return theInstance;
+//	// variable used for singleton pattern
+//	private static Board theInstance = new Board();
+//	// ctor is private to ensure only one can be created
+//	private Board() {}
+//	// this method returns the only Board
+//	public static Board getInstance() {
+//		return theInstance;
+//	}
+	public Board() {
+		addMouseListener(this);
 	}
 		
+	public void mouseClicked(MouseEvent e) {
+		BoardCell cell = whichClicked(e.getX(), e.getY());
+		if(cell == null) {
+			JOptionPane.showMessageDialog(null, "Cell Clicked is not a target!");
+		} else if (humanPlayer.stillTakingTurn()) {
+			humanPlayer.finishTurn(cell, this);
+		}
+	}
+	
+	private BoardCell whichClicked(int x, int y) {
+		if(targets != null) {
+			for(BoardCell cell : targets) {
+				if(cell.mouseWithin(x, y)) {
+					return cell;
+				}
+			}
+		}
+		return null;
+	}
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		for (int i = 0; i < numRows; i++) {
@@ -59,6 +85,23 @@ public class Board extends JPanel {
 		humanPlayer.draw(g);
 		for (ComputerPlayer player : computerPlayers) {
 			player.draw(g);
+		}
+	}
+	
+	public void highlight() {
+		if(targets != null) {
+			for(BoardCell cell : targets) {
+				cell.setHighlight(true);
+			}
+		}
+		repaint();
+	}
+	
+	public void unHighlight() {
+		if(targets != null) {
+			for(BoardCell cell : targets) {
+				cell.setHighlight(false);
+			}
 		}
 	}
 	
@@ -509,5 +552,11 @@ public class Board extends JPanel {
 		
 		return testPlayers;
 	}
+
+	public void mouseEntered(MouseEvent event) {}
+	public void mouseExited(MouseEvent event) {}
+	public void mousePressed(MouseEvent event) {}
+	public void mouseReleased(MouseEvent event) {}
+	
 	
 }
