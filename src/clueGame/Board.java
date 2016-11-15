@@ -7,8 +7,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -90,7 +92,47 @@ public class Board extends JPanel {
 	
 	public void dealCards(){
 		int counter = 0;
+		//TODO add logic to set a solution
+		List<Card> dealList = new ArrayList();
+		boolean weaponSwitch = true;
+		boolean roomSwitch = true;
+		boolean personSwitch = true;
+		Card weaponCard = new Card("", CardType.WEAPON);
+		Card roomCard = new Card("", CardType.ROOM);
+		Card personCard = new Card("", CardType.PERSON);
+		
 		for(Card currentCard: deckOfCards){
+			dealList.add(currentCard);
+		}
+		
+		Collections.shuffle(dealList);
+		for(Card card: dealList) {
+			if(weaponSwitch) {
+				if(card.getCardType() == CardType.WEAPON) {
+					dealList.remove(card);
+					weaponCard = card;
+					weaponSwitch = false;
+				}
+			}
+			if(roomSwitch) {
+				if(card.getCardType() == CardType.ROOM) {
+					dealList.remove(card);
+					roomCard = card;
+					roomSwitch = false;
+				}
+			}
+			if(personSwitch) {
+				if(card.getCardType() == CardType.PERSON) {
+					dealList.remove(card);
+					personCard = card;
+					personSwitch = false;
+				}
+			}
+		}
+		
+		
+		//THIS IS WHERE THE ERROR WILL BE
+		for(Card currentCard: dealtCards){
 			if (counter % 6 == 0) {
 				humanPlayer.addCard(currentCard);
 				dealtCards[counter] = currentCard;
@@ -100,6 +142,8 @@ public class Board extends JPanel {
 			}
 			counter = counter + 1;
 		}
+		
+		setTheAnswer(personCard.getCardName(), roomCard.getCardName(), weaponCard.getCardName());
 	}
 	
 	public void loadPlayerConfig() throws BadConfigFormatException, FileNotFoundException{
@@ -398,7 +442,7 @@ public class Board extends JPanel {
 		return deckOfCards;
 	}
 	
-	public Object getNumberOfRoomCards() {
+	public int getNumberOfRoomCards() {
 		int counter = 0;
 		for(Card currentCard: deckOfCards){
 			if(currentCard.getCardType() == CardType.ROOM){
@@ -408,7 +452,7 @@ public class Board extends JPanel {
 		return counter;
 	}
 	
-	public Object getNumberOfWeaponCards() {
+	public int getNumberOfWeaponCards() {
 		int counter = 0;
 		for(Card currentCard: deckOfCards){
 			if(currentCard.getCardType() == CardType.WEAPON){
@@ -418,7 +462,7 @@ public class Board extends JPanel {
 		return counter;
 	}
 	
-	public Object getNumberOfPersonCards() {
+	public int getNumberOfPersonCards() {
 		int counter = 0;
 		for(Card currentCard: deckOfCards){
 			if(currentCard.getCardType() == CardType.PERSON){
