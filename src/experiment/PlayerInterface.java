@@ -172,31 +172,24 @@ public class PlayerInterface extends JPanel{
 		//if they cancel, we setVisible = false
 		//set the value of guessDialog 0,1 to be the current room of the player
 		//ToDo:
-		//Find out why we check immediatly
-		System.out.println("1");
+		//Find out why we check immediately
 		if (!humanPlayer.stillTakingTurn()) {
 			JOptionPane.showMessageDialog(null, "Wait your turn");
-			System.out.println("2");
-		} else {
-			System.out.println("3");
-			guessDialog = new GuessDialog(board,null);
-			guessDialog.setVisible(true);
-			if (guessDialog.getSubmit()) {
-				System.out.println("4");
-				Solution solution = new Solution(guessDialog.getPerson(),guessDialog.getRoom(),guessDialog.getWeapon());
-				boolean check = board.checkAccusation(solution);
-				System.out.println(check);
-				if (check) {
-					System.out.println("5");
-					JOptionPane.showMessageDialog(this, "Congrats You Won!", "WINNER", JOptionPane.INFORMATION_MESSAGE);
-					System.exit(0);
-				} else {
-					System.out.println("6");
-					JOptionPane.showMessageDialog(this, "Incorrect Accusation", "WRONG", JOptionPane.INFORMATION_MESSAGE);
-				}
-			}
-			humanPlayer.setTakingTurn(false);
+			return;
 		}
+		guessDialog = new GuessDialog(board,null);
+		guessDialog.setVisible(true);
+		if (guessDialog.getSubmit()) {
+			Solution solution = new Solution(guessDialog.getPerson(),guessDialog.getRoom(),guessDialog.getWeapon());
+			boolean check = board.checkAccusation(solution);
+			if (check) {
+				JOptionPane.showMessageDialog(this, "Congrats You Won!", "WINNER", JOptionPane.INFORMATION_MESSAGE);
+				System.exit(0);
+			} else {
+				JOptionPane.showMessageDialog(this, "Incorrect Accusation", "WRONG", JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
+		humanPlayer.setTakingTurn(false);
 	}
 	
 

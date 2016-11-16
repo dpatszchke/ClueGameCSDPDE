@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.BorderLayout;
+import java.awt.Dialog;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +30,8 @@ public class GuessDialog extends JDialog {
 	
 	
 	public GuessDialog(Board board, String currentRoom) {
+		super();
+		setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setTitle("Make a Guess");
 		setSize(300, 300);
@@ -86,8 +89,6 @@ public class GuessDialog extends JDialog {
 		add(people);
 		
 		setButtons();
-		
-		setVisible(false);
 	}
 	
 	public void setButtons() {
