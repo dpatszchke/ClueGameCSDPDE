@@ -10,6 +10,18 @@ public class Solution {
 		this.room = room;
 		this.weapon = weapon;
 	}
+	
+	public void setRoom(String room) {
+		this.room = room;
+	}
+	
+	public void setWeapon(String weapon) {
+		this.weapon = weapon;
+	}
+	
+	public void setPerson(String person) {
+		this.person = person;
+	}
 
 	@Override
 	public String toString() {

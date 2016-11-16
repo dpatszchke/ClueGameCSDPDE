@@ -19,6 +19,12 @@ public class ComputerPlayer extends Player{
 		setRow(location.getRow());
 		setColumn(location.getColumn());
 		board.repaint();
+		
+		//TODO: add making a suggestion if it is in a room
+		//look at logic under humanPlayer
+		if (location.isRoom()) {
+			createSuggestion(location,board);
+		}
 	}
 	
 	public void setLastCellVisited(BoardCell lastCellVisited) {

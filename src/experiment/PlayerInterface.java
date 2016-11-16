@@ -19,8 +19,10 @@ import javax.swing.border.TitledBorder;
 
 import clueGame.Board;
 import clueGame.ComputerPlayer;
+import clueGame.GuessDialog;
 import clueGame.HumanPlayer;
 import clueGame.Player;
+import clueGame.Solution;
 
 public class PlayerInterface extends JPanel{
 	//Items in layout
@@ -41,22 +43,23 @@ public class PlayerInterface extends JPanel{
 	//Die
 	private Random dice = new Random();
 	
+	//accusation interface
+	//TODO new call
+	private GuessDialog guessDialog;
+	
 	public PlayerInterface(Board board) {
 		this.board = board;
 		humanPlayer = board.gethumanPlayer();
 		computerPlayers = board.getComputerPlayers();
 		playerTracker = computerPlayers.length - 1;
 		
-		setLayout(new GridLayout(2,0));
+		setLayout(new GridLayout(2,2));
 		createLayout();
 	}
 	
 	private void createLayout() {
-		JPanel panel = new JPanel();
-		panel.add(panelTop());
-		panel.add(panelBottom());
-		
-		add(panel);
+		add(panelTop());
+		add(panelBottom());
 	}
 
 	private JPanel panelBottom() {
@@ -66,7 +69,7 @@ public class PlayerInterface extends JPanel{
 		rollField = new JTextField(3);
 		rollField.setEditable(false);
 		JPanel rollPanel = new JPanel();
-		rollPanel.setLayout(new GridLayout(2, 0));
+		rollPanel.setLayout(new GridLayout(1, 2));
 		rollPanel.add(label);
 		rollPanel.add(rollField);
 		rollPanel.setBorder(new TitledBorder(new EtchedBorder(), "Die"));
@@ -86,7 +89,7 @@ public class PlayerInterface extends JPanel{
 		responseField = new JTextField(12);
 		responseField.setEditable(false);
 		JPanel responsePanel = new JPanel();
-		responsePanel.setLayout(new GridLayout(2, 0));
+		responsePanel.setLayout(new GridLayout(1, 2));
 		responsePanel.add(label);
 		responsePanel.add(responseField);
 		responsePanel.setBorder(new TitledBorder(new EtchedBorder(), "Response"));
@@ -110,6 +113,7 @@ public class PlayerInterface extends JPanel{
 		nextPlayer.addActionListener(new ButtonListener());
 		panel.add(nextPlayer);
 		makeAccusation = new JButton("Make an accusation");
+		makeAccusation.addActionListener(new ButtonListener());
 		panel.add(makeAccusation);
 		//return it
 		return panel;
@@ -164,11 +168,36 @@ public class PlayerInterface extends JPanel{
 	//unhighlight
 	//move
 	public void makeClicked() {
-
+		//logic: if clicked we set visible equal to true and send in the accusation that they enter if submit
+		//if they cancel, we setVisible = false
+		//set the value of guessDialog 0,1 to be the current room of the player
+		//ToDo:
+		//Find out why we check immediatly
+		System.out.println("1");
+		if (!humanPlayer.stillTakingTurn()) {
+			JOptionPane.showMessageDialog(null, "Wait your turn");
+			System.out.println("2");
+		} else {
+			System.out.println("3");
+			guessDialog = new GuessDialog(board,null);
+			guessDialog.setVisible(true);
+			if (guessDialog.getSubmit()) {
+				System.out.println("4");
+				Solution solution = new Solution(guessDialog.getPerson(),guessDialog.getRoom(),guessDialog.getWeapon());
+				boolean check = board.checkAccusation(solution);
+				System.out.println(check);
+				if (check) {
+					System.out.println("5");
+					JOptionPane.showMessageDialog(this, "Congrats You Won!", "WINNER", JOptionPane.INFORMATION_MESSAGE);
+					System.exit(0);
+				} else {
+					System.out.println("6");
+					JOptionPane.showMessageDialog(this, "Incorrect Accusation", "WRONG", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+			humanPlayer.setTakingTurn(false);
+		}
 	}
-	
-	
-	
 	
 
 }

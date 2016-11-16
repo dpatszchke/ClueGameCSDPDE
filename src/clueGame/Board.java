@@ -439,12 +439,18 @@ public class Board extends JPanel implements MouseListener {
 		for(Player player:players){
 			returnCard = player.dissproveSuggestion(suggestion);
 			if (returnCard != null){
+				for (ComputerPlayer cp : computerPlayers) {
+					cp.deleteCardFromUnseen(returnCard);
+				}
 				return returnCard;
 			}
 		}
 		for(int i = 0; i < accuserPostion; i++){
 			returnCard = players.get(i).dissproveSuggestion(suggestion);
 			if (returnCard != null){
+				for (ComputerPlayer cp : computerPlayers) {
+					cp.deleteCardFromUnseen(returnCard);
+				}
 				return returnCard;
 			}
 		}
