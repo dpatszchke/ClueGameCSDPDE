@@ -1,0 +1,354 @@
+commit 7f862e70feaf0cc0f86683de5811da7def313f9c
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Fri Nov 18 20:22:46 2016 -0700
+
+    Final changes to clue
+
+commit fcce78436cf793ecfd5d1eb78bfa7284b6be5aa5
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Wed Nov 16 10:45:07 2016 -0700
+
+    BOOYAH! Fixed stupid accusing issue
+
+commit ab39dd4593346b70e67d9ba044f786bc2ccaca59
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Tue Nov 15 22:42:04 2016 -0700
+
+    Adding roughly 40% of ClueGame II
+
+commit a0fc0968acb6e326e965e7d3690a9ceb74b9cd79
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Mon Nov 14 23:12:24 2016 -0700
+
+    Pair Programming (forgot to commit) finished cluegame1
+
+commit d54ea814e1d344af9376d268a11ab7a1dadec735
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Mon Nov 14 21:18:19 2016 -0700
+
+    Changing ControlGui
+
+commit a3dba0d4446119e948673477e8e14ecf05b53323
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Mon Nov 14 19:01:03 2016 -0700
+
+    Fixing some things
+
+commit 52f37a1cd5be8e8247222d634083d1df69fd956e
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Wed Nov 9 16:59:18 2016 -0700
+
+    More Gui (pair programming)
+
+commit 4443d646e1e365f1c234599a8ccbbde444fe110c
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Tue Nov 8 21:01:16 2016 -0700
+
+    Adding new git log
+
+commit 601186fcb7b36ce489009f7dc3e0a0d3fa82c361
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Tue Nov 8 20:59:32 2016 -0700
+
+    Adding the GUI (pair programmed)
+
+commit 4efff7538e7df515001f7aa10133ca135b295c3c
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Tue Nov 8 19:28:59 2016 -0700
+
+    Added csv names, draw methods
+
+commit da3bb3893358b9891ec7a5130006f0891ec68c19
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Mon Nov 7 21:51:35 2016 -0700
+
+    Adding the two classes for GUI
+
+commit 4dd972a93f286518717c69d97bbca80a663bda4b
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Mon Nov 7 21:33:38 2016 -0700
+
+    Moved deprecated tests out of package
+
+commit f02f4c255a1f4905b582950c9ca5c4767e334f4f
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Sun Nov 6 18:36:03 2016 -0700
+
+    refactoring methods in Card.java
+
+commit d63fdffb7842f7a49b0b4066660e24f6d04c184a
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Sun Nov 6 18:31:54 2016 -0700
+
+    Changing the way that we compare boardCells
+
+commit e87afb190ce2495317f523f0d28d286da664cb7b
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Sun Nov 6 18:28:36 2016 -0700
+
+    Removing unused method with extra parameters
+
+commit b69c106666a09e0ea523adb342a3acbfba1970e3
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Sun Nov 6 18:27:27 2016 -0700
+
+    Making a change to loadBoardConfig for readability
+
+commit f5657b1bfb9ecb4d24ffad83e63c13ca8455c995
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Sun Nov 6 18:26:14 2016 -0700
+
+    Adding more closure statuses for a scanner
+
+commit fc342e26f748237c37b1d137da7f0f128d6e3e4b
+Author: Garrett Daly <gdaly@mymail.mines.edu>
+Date:   Sun Nov 6 18:24:24 2016 -0700
+
+    Adding another file close condition
+
+commit e753f372b37146840274d966028ccd0d6ae5d4cf
+Author: Dylon Patschke <dpatschk@mines.edu>
+Date:   Thu Nov 3 11:55:57 2016 -0600
+
+    Refactoring handleSuggestion
+
+commit caa001ac23b9b09e27a826df1fb20c59c8c6a044
+Author: Dylon Patschke <dpatschk@mines.edu>
+Date:   Thu Nov 3 11:46:21 2016 -0600
+
+    Refactoring pickLocation
+
+commit d1062a548f6ae8af1ebd04a09f3c335fc058b94d
+Author: Dylon Patschke <dpatschk@mines.edu>
+Date:   Mon Oct 31 23:25:15 2016 -0600
+
+    Guid panel
+
+commit 10740420b39029dda57ca6e1cb421b6c5757c097
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Wed Oct 26 23:21:08 2016 -0700
+
+    all tests pass
+
+commit 75b5c121b10119771283039ff6378d7a3de2be56
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Wed Oct 26 22:44:44 2016 -0700
+
+    failed handle suggestion tests
+
+commit f8586bdb30b51b1b2425350ffdf0bf0899e41cdc
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Wed Oct 26 22:01:06 2016 -0700
+
+    added in comments
+
+commit 41b0693cd9bac2aa27a337ddd325f05e2cd49d26
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Wed Oct 26 21:44:24 2016 -0700
+
+    passing disproving suggestion tests
+
+commit 0d0176b9ceb46a81f52736db742bb831741abc68
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Wed Oct 26 21:17:26 2016 -0700
+
+    failing tests for handling suggestions
+
+commit dd9bf94b392e60f3f04cd6aed735135cd3308c00
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Wed Oct 26 20:55:47 2016 -0700
+
+    got creating suggestion tests working
+
+commit c9c4d6978b406043f2b28cd40f09a7523589e76b
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Wed Oct 26 17:58:04 2016 -0700
+
+    forgot to add in test files
+
+commit 356219e488ed38deb64343683cbde517bbecda55
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Wed Oct 26 16:51:00 2016 -0700
+
+    Completing suggestion methods
+
+commit 44e583552b074b931ef47443fa3abc5f65e0c04d
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Wed Oct 26 14:59:56 2016 -0700
+
+    failing tests for create suggestion created
+
+commit 21e797cc8c5d31f999d1ec6db8451980e42d95cd
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Tue Oct 25 16:05:54 2016 -0700
+
+    accusation tests working
+
+commit c7d6edf674b0738d26b6e0a0eb2fe2cfdf44d56f
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Tue Oct 25 16:01:22 2016 -0700
+
+    failing tests for accussations
+
+commit 997358f747a9fe05fd48551aa54ddb79e4466694
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Tue Oct 25 13:04:17 2016 -0700
+
+    almost targets testsrunnign
+
+commit 692f26a1fcbd43aba375c09a2564351de4375d46
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Tue Oct 25 12:26:02 2016 -0700
+
+    failing target tests written
+
+commit 98dcd6cefcbfa055224dbd36ae97836d867ee9f8
+Merge: c0c0a04 fa8e735
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Tue Oct 25 11:52:42 2016 -0700
+
+    Merge https://github.com/dpatszchke/ClueGameCSDPDE
+
+commit c0c0a04744f116fe8530e10ddcbc8f172826b7d9
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Tue Oct 25 11:52:36 2016 -0700
+
+    took out a system out
+
+commit fa8e735704021ddff266986ad56f5d77b80e2281
+Author: Dylon Patschke <dpatschk@mines.edu>
+Date:   Mon Oct 24 20:35:56 2016 -0600
+
+    Completed comments on test file
+
+commit fbd3d1e4d0ecd06e45613ea7e7e7832ed053d058
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Mon Oct 24 15:51:55 2016 -0700
+
+    Got dealt cards test working
+
+commit d9f91428d54f0ab6988349bcb92721a4bf864d13
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Mon Oct 24 15:23:09 2016 -0700
+
+    delaing og the cards failing tests written
+
+commit 5afaf8bda4d1cb8ecdde286da8afba0d42c14e97
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Fri Oct 21 15:57:48 2016 -0700
+
+    Got deckloading tests passing
+
+commit 910210bfbf3d8b5fc8b1c8e03980f5aebcc1c88e
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Fri Oct 21 15:28:08 2016 -0700
+
+    coded failing loadingDeckCards
+
+commit 9e9da3aae1f308f5d2eba92b36e1b467e0db7980
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Fri Oct 21 14:54:32 2016 -0700
+
+    Got load people tests working
+
+commit 559e691686e8f05ddd2b5b8c60387a6e8f2c15e1
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Thu Oct 20 13:57:53 2016 -0700
+
+    time to stop on thursday, will continue tomorrow
+
+commit 77e3971399b477b7ebacfacc40f99a1c68190003
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Thu Oct 20 13:29:45 2016 -0700
+
+    saved a few unsaved classes, faling tests for player
+
+commit 6dfdbad55c7dbf60966f205eec78e609b61d7bee
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Thu Oct 20 13:20:41 2016 -0700
+
+    We have failing tests for loading people
+
+commit 40918c9086ce27d61565fd4c25b9952e0820a7d0
+Author: Dylan Eberhard <Dylan Eberhard>
+Date:   Thu Oct 20 12:29:24 2016 -0700
+
+    added classes from uml and got a txt file with cards in it
+
+commit 3bcdcd4f0ca582fb9a091a4bde3785f121dcb0e5
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Mon Oct 10 17:47:08 2016 -0600
+
+    Tests passed for move targeting
+
+commit 13f19a15ae3673f9804b1a35efe1861944bcfef5
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Thu Oct 6 12:23:33 2016 -0600
+
+    Started tests for standard and custom games
+
+commit a4bccf08374b546c5f14b7f66a28b3626fe4be87
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Wed Oct 5 19:27:24 2016 -0600
+
+    Never mind, problems solved
+
+commit e7579b9b50e655fad31b16051234c1aee4d07311
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Wed Oct 5 19:22:02 2016 -0600
+
+    Now with data files added
+
+commit c824636d31b83034ffdc550ea70e4e89db505a79
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Wed Oct 5 19:19:50 2016 -0600
+
+    Most of board config complete, need to fine tune loadRoomCfg
+
+commit 46a2ef33882ba2d3998305ac48bd56307e1b5ac2
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Tue Oct 4 11:48:22 2016 -0600
+
+    Created tests for board, added our board and legend
+
+commit de70dafdde16c82f898043b0a118dcd198b310ff
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Tue Oct 4 11:13:55 2016 -0600
+
+    NOW they're there
+
+commit 9534060b6476a3228e1a8ee59f64e37597486df0
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Tue Oct 4 11:13:18 2016 -0600
+
+    Created skeleton classes for board and spaces
+
+commit 18334f9fa274126c0fd12b2dc362e86759d98e27
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Mon Oct 3 13:31:50 2016 -0600
+
+    Passed targeting tests
+
+commit 7d16d7b7aef9e306cea22b09129141d69adc587f
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Mon Oct 3 12:48:20 2016 -0600
+
+    Passed adjacency tests
+
+commit 3874dbae991a789d05b805d2ee18e5ceb6ec228d
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Fri Sep 30 10:26:05 2016 -0600
+
+    Started JUnit testing for targeting algorithm
+
+commit b74b72feb48ec32cbf2795f3972c9e3836a7e3b3
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Thu Sep 29 11:46:34 2016 -0600
+
+    Created files for testing path algorithms
+
+commit b8fb9a663aa0896202bb47c19bb4f88117824a73
+Author: Jared Popelar <jpopelar@adit.mines.edu>
+Date:   Thu Sep 29 11:41:31 2016 -0600
+
+    Initial commit
