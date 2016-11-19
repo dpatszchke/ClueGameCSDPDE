@@ -13,9 +13,10 @@ public class HumanPlayer extends Player{
 		
 	}
 
-	public void move(Board board) {
+	public void move(Board board, int playerTracker) {
 		board.highlight();
 		takingTurn = true;
+		
 	}
 	
 	public boolean stillTakingTurn() {
@@ -33,6 +34,15 @@ public class HumanPlayer extends Player{
 			String currentRoom = roomMap.get(cell.getInitial());
 			GuessDialog dialog = new GuessDialog(board,currentRoom);
 			dialog.setVisible(true);
+			if(dialog.getSubmit()) {
+				BoardCell tmp = board.getCellAt(getRow(), getColumn());
+				String room = currentRoom;
+				String weapon = dialog.getWeapon();
+				String person = dialog.getPerson();
+				
+				Solution suggestion = new Solution(person, room, weapon);
+				Card temp = board.handleSuggestion(suggestion, board.getComputerPlayerArrayList(), 0);
+			}
 		}
 		takingTurn = false;
 		//if this location is a room we need to prompt the human for a suggestion

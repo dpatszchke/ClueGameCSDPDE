@@ -17,7 +17,7 @@ public abstract class Player {
 	protected Map<String, CardType> unseenCards = new HashMap<String, CardType>();
 	protected Color color;
 	
-	public abstract void move(Board board);
+	public abstract void move(Board board, int playerTracker);
 	
 	public Player(String playerName, Color color, int row, int column, Set<Card> deck) {
 		this.playerName = playerName;

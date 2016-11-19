@@ -18,6 +18,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import clueGame.Board;
+import clueGame.Card;
 import clueGame.ComputerPlayer;
 import clueGame.GuessDialog;
 import clueGame.HumanPlayer;
@@ -159,8 +160,7 @@ public class PlayerInterface extends JPanel{
 		
 		board.unHighlight();
 		board.calcTargets(player.getRow(), player.getColumn(), diceRoll);
-		player.move(board);
-		
+		player.move(board, playerTracker);
 		
 		
 		
@@ -180,6 +180,7 @@ public class PlayerInterface extends JPanel{
 		guessDialog = new GuessDialog(board,null);
 		guessDialog.setVisible(true);
 		if (guessDialog.getSubmit()) {
+			
 			Solution solution = new Solution(guessDialog.getPerson(),guessDialog.getRoom(),guessDialog.getWeapon());
 			boolean check = board.checkAccusation(solution);
 			if (check) {
@@ -190,6 +191,25 @@ public class PlayerInterface extends JPanel{
 			}
 		}
 		humanPlayer.setTakingTurn(false);
+	}
+
+	public void setGuessField(Solution suggestion) {
+		if(suggestion == null) {
+			guessField.setText("No new suggestion");
+		} else {
+			String temp = suggestion.print();
+			guessField.setText(temp);
+		}
+		
+	}
+
+	public void setGuessResult(Card returnCard) {
+		if(returnCard == null) {
+			responseField.setText("No New Clue");
+		} else {
+			responseField.setText(returnCard.getCardName());
+		}
+		
 	}
 	
 

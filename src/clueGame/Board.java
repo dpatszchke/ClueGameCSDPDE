@@ -22,6 +22,8 @@ import java.util.TreeMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import experiment.PlayerInterface;
+
 public class Board extends JPanel implements MouseListener {
 	
 	private int numRows;
@@ -434,7 +436,9 @@ public class Board extends JPanel implements MouseListener {
 	}
 	
 	public Card handleSuggestion(Solution suggestion, ArrayList<Player> players, int accuserPostion){
-		Card returnCard;
+		Card returnCard = null;
+		PlayerInterface pi = ClueGame.getPlayerInterface();
+		pi.setGuessField(suggestion);
 		//looping through players and seeing if one of the players returns a card
 		for(Player player:players){
 			returnCard = player.dissproveSuggestion(suggestion);
@@ -442,6 +446,7 @@ public class Board extends JPanel implements MouseListener {
 				for (ComputerPlayer cp : computerPlayers) {
 					cp.deleteCardFromUnseen(returnCard);
 				}
+				pi.setGuessResult(returnCard);
 				return returnCard;
 			}
 		}
@@ -451,9 +456,11 @@ public class Board extends JPanel implements MouseListener {
 				for (ComputerPlayer cp : computerPlayers) {
 					cp.deleteCardFromUnseen(returnCard);
 				}
+				pi.setGuessResult(returnCard);
 				return returnCard;
 			}
 		}
+		pi.setGuessResult(returnCard);
 		return null;
 	}
 	
@@ -483,6 +490,16 @@ public class Board extends JPanel implements MouseListener {
 	
 	public Set<BoardCell> getTargets() {
 		return targets;
+	}
+	
+	public ArrayList<Player> getComputerPlayerArrayList() {
+		ArrayList<Player> temp = new ArrayList<Player>();
+		int tempInt = computerPlayers.length;
+		for(int i = 0; i < tempInt; i++) {
+			temp.add(computerPlayers[i]);
+		}
+		return temp;
+		
 	}
 	
 	public ComputerPlayer[] getComputerPlayers() {

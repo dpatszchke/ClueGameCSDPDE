@@ -17,6 +17,9 @@ public class ClueGame extends JFrame {
 	private boolean toggle;
 	private static PlayerInterface playerI;
 	
+	public static PlayerInterface getPlayerInterface() {
+		return playerI;
+	}
 	
 	public ClueGame(Board board) {
 		toggle = false;

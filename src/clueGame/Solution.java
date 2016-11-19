@@ -27,6 +27,11 @@ public class Solution {
 	public String toString() {
 		return "Solution [person=" + person + ", room=" + room + ", weapon=" + weapon + "]";
 	}
+
+	public String print() {
+		String temp = person + ", " + room + ", " + weapon;
+		return temp;
+	}
 	
 	
 }
